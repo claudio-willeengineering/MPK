@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="10dp"
+    android:clickable="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity="right">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/discount"
+        android:scaleType="centerInside"
+        />
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/qrimagebox"
+        android:src="@drawable/placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        />
+    
+    <TextView
+        android:text="@string/placeholder2"
+        style="@style/contentBodyText"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="20dp"/>
+
+</LinearLayout>

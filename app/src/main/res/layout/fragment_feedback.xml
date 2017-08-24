@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:gravity="center"
+    android:background="@color/white"
+    android:clickable="true"
+    >
+
+    <TextView
+        style="@style/titleTextStyle"
+        android:text="@string/fragment_feedback_content_title"/>
+
+    <TextView
+        style="@style/contentBodyText"
+        android:text="@string/placeholder2"
+        android:layout_marginTop="30dp"
+    />
+
+    <ImageView
+        android:id="@+id/recordAudio"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:src="@drawable/recordaudio_normal"/>
+
+</LinearLayout>

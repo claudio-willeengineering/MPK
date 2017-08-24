@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">MPK</string>
+    <string name="facebook_app_id">615716218628762</string>
+    <string name="fb_login_protocol_scheme">fb[615716218628762]</string>
+
+
+    <!-- First SCreens -->
+    <string name="first_screens_title">Herzlich Willkommen</string>
+    <string name="first_screen_button_close">Schließen</string>
+
+    <string name="placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Etiam interdum mauris convallis, dignissim lectus eu, efficitur eros.
+        Morbi non orci sed lorem aliquam cursus. Phasellus mattis, dui eget malesuada vestibulum, velit augue fringilla lacus,
+        nec semper massa tellus eu ante. Vestibulum semper, quam et efficitur rutrum, tellus orci ultrices orci,
+        eu suscipit felis est sagittis tellus. Sed malesuada ultricies mattis.
+        Fusce nec metus ex. Pellentesque id leo pulvinar, faucibus metus et, iaculis nibh
+    </string>
+
+    <string name="placeholder2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Etiam interdum mauris convallis, dignissim lectus eu, efficitur eros.
+        Morbi non orci sed lorem aliquam cursus.
+    </string>
+
+
+    <string name="home_button_pass">Pass</string>
+    <string name="home_button_feedback">Feedback</string>
+    <string name="home_title">Home</string>
+    <string name="firstscreen_permissions_title">Permissions</string>
+    <string name="firstscreen_willkommen_title">Willkommen</string>
+    <string name="permission_denied_dialog_title">Permission Denied</string>
+    <string name="permission_denied_dialog_body">For optimum experience, this permission is important</string>
+    <string name="text_yes">Ja</string>
+    <string name="text_no">Nein</string>
+    <string name="textbox_hint_email">E-mail Addresse</string>
+    <string name="dialog_facebook_title">Facebook Verbinden</string>
+    <string name="dialog_facebook_message">Sie haben Ihr Facebook erfolgreich verbunden</string>
+    <string name="dalog_facebook_error_cancel_message">Facebook-Verbindung war nicht erfolgreich, Sie werden nicht in der Lage sein, personalisierte Empfehlungen zu erhalten</string>
+    <string name="fragment_feedback_content_title">Was haben Sie auf dem Herzen?</string>
+
+
+</resources>
