@@ -30,8 +30,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Signature;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -297,7 +299,13 @@ public class FirstScreenActivity extends AppCompatActivity {
                     callbackManager = CallbackManager.Factory.create();
 
                     LoginButton loginButton = (LoginButton) rootView.findViewById(R.id.login_button);
-                    loginButton.setReadPermissions("email");
+                    loginButton.setReadPermissions("email",
+                    "public_profile", "user_about_me","user_actions.books",
+                            "user_actions.music", "user_actions.news",
+                            "user_likes","user_religion_politics","user_tagged_places"
+                            , "user_friends");
+
+
                     // If using in a fragment
                     //loginButton.setFragment(this);
 
@@ -305,6 +313,10 @@ public class FirstScreenActivity extends AppCompatActivity {
                     loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                         @Override
                         public void onSuccess(LoginResult loginResult) {
+
+
+                            ((MPKApplication)getApplication()).setFbToken(AccessToken.getCurrentAccessToken());
+
                             final AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
                             dialog.setTitle(R.string.dialog_facebook_title);
                             dialog.setMessage(R.string.dialog_facebook_message);

@@ -36,6 +36,8 @@
     <string name="dialog_facebook_message">Sie haben Ihr Facebook erfolgreich verbunden</string>
     <string name="dalog_facebook_error_cancel_message">Facebook-Verbindung war nicht erfolgreich, Sie werden nicht in der Lage sein, personalisierte Empfehlungen zu erhalten</string>
     <string name="fragment_feedback_content_title">Was haben Sie auf dem Herzen?</string>
+    <string name="error_audio_dialog_title">Achtung</string>
+    <string name="error_audio_dialog_body">Without Audio Permission, you cannot submit feedback</string>
 
 
 </resources>

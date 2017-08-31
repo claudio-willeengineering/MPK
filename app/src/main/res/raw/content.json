@@ -5,13 +5,12 @@
 			"id": 1,
 			"image": "Bild_1.png",
 			"pixel_coords": {
-				"x": 785,
-				"y": 358
+				"x": 130,
+				"y": 140
 			},
 			"references": [
 				3,
-				5,
-				7
+				5
 			],
 			"text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
 			"title": "A1 Exponat"
@@ -21,8 +20,8 @@
 			"id": 2,
 			"image": "Bild_2.png",
 			"pixel_coords": {
-				"x": 158,
-				"y": 35
+				"x": 458,
+				"y": 435
 			},
 			"references": [
 
@@ -35,8 +34,8 @@
 			"id": 3,
 			"image": "Bild_3.png",
 			"pixel_coords": {
-				"x": 348,
-				"y": 257
+				"x": 648,
+				"y": 857
 			},
 			"references": [
 				1,
@@ -50,7 +49,7 @@
 			"id": 4,
 			"image": "Bild_4.png",
 			"pixel_coords": {
-				"x": 25,
+				"x": 925,
 				"y": 128
 			},
 			"references": [

@@ -28,7 +28,7 @@
         <TextView
             android:id="@+id/aboutBody"
             style="@style/contentBodyText"
-            android:text="@string/placeholder"
+            android:text="@string/placeholder2"
             />
 
     </LinearLayout>

@@ -18,12 +18,30 @@
         android:layout_marginTop="30dp"
     />
 
-    <ImageView
-        android:id="@+id/recordAudio"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scaleType="centerInside"
-        android:src="@drawable/recordaudio_normal"/>
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/recordAudio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@drawable/recordaudio_normal"/>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="false"
+            android:max="1000"
+            android:progress="0"
+            android:progressDrawable="@drawable/circular_progressbar" />
+
+
+
+
+    </RelativeLayout>
 
 </LinearLayout>

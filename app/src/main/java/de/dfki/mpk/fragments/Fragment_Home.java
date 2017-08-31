@@ -12,9 +12,6 @@ import android.widget.FrameLayout;
 import de.dfki.mpk.Home;
 import de.dfki.mpk.R;
 
-/**
- * Created by Olakunmi on 09/08/2017.
- */
 
 public class Fragment_Home extends BaseFragment {
 
@@ -50,8 +47,6 @@ public class Fragment_Home extends BaseFragment {
                 ((Home)activity).switchFragment(FragmentUbersischt.createInstance());
             }
         });
-
-
 
         return v;
     }

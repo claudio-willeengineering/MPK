@@ -1,7 +1,10 @@
 package de.dfki.mpk.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +16,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import de.dfki.mpk.Home;
 import de.dfki.mpk.R;
 import de.dfki.mpk.model.Content;
 import de.dfki.mpk.model.Exhibits;
@@ -28,9 +33,7 @@ import de.dfki.mpk.utils.UtilsHelpers;
 
 public class FragmentUbersischt extends BaseFragment{
     private static FragmentUbersischt currentInstance = null;
-    public JSONObject jsonData = null;
-    List<Exhibits> exhibits = new ArrayList<>();
-    List<Topic> topics = new ArrayList<>();
+
 
 
     public static FragmentUbersischt createInstance(){
@@ -47,43 +50,43 @@ public class FragmentUbersischt extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_ubersischt,container,false);
-        jsonData = UtilsHelpers.fromRawToJson(getActivity(),R.raw.content);
 
-        try {
-            JSONArray exibs = jsonData.getJSONArray("exhibits");
-            JSONArray tops = jsonData.getJSONArray("topics");
-            for(int i=0; i<exibs.length(); i++)
-            {
-                exhibits.add(new Exhibits(exibs.getJSONObject(i)));
-            }
-            for (int i=0; i<tops.length(); i++)
-            {
-                topics.add(new Topic(tops.getJSONObject(i)));
-            }
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        exhibits.sort(new Comparator<Exhibits>() {
-            @Override
-            public int compare(Exhibits to, Exhibits t1) {
-                return  (to.getTitle().charAt(0)+"").compareTo(t1.getTitle().charAt(0)+"");
-            }
-        });
-
-        topics.sort(new Comparator<Topic>() {
-            @Override
-            public int compare(Topic to, Topic t1) {
-                return  (to.getTitle().charAt(0)+"").compareTo(t1.getTitle().charAt(0)+"");
-            }
-        });
 
 
         RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
-        
+        final ExhibitionAdapter adapter = new ExhibitionAdapter(((Home)getActivity()).getExhibits(),getActivity());
 
+        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(llm);
+
+        TabLayout layout = v.findViewById(R.id.tabLayout);
+        layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition())
+                {
+                    case 0:
+                        adapter.setData(((Home) getActivity()).getExhibits());
+                        break;
+                    case 1:
+                        adapter.setData(((Home) getActivity()).getTopics());
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 
 
@@ -92,13 +95,19 @@ public class FragmentUbersischt extends BaseFragment{
         return v;
     }
 
-    class ExhibitionAdapter extends RecyclerView.Adapter<ExhibitionViewHolder>{
+    class ExhibitionAdapter<T extends Content> extends RecyclerView.Adapter<ExhibitionViewHolder>{
 
-        List<UbersichtItem> data = null;
+        public List<UbersichtItem> data = null;
+        public Activity activity = null;
 
-        public ExhibitionAdapter(List<Content> items)
+        public ExhibitionAdapter(List<T> items, Activity context)
         {
+            activity = context;
+            setData(items);
+        }
 
+        public void setData(List<T> items)
+        {
             data = new ArrayList<>();
             String lastLetterStart = "";
 
@@ -107,18 +116,19 @@ public class FragmentUbersischt extends BaseFragment{
                 if(lastLetterStart.compareTo("")==0)
                 {
                     lastLetterStart = c.getTitle().charAt(0)+"";
-                    data.add(new UbersichtItem(lastLetterStart));
+                    data.add(new UbersichtItem(lastLetterStart.toUpperCase()));
                 }
                 else
                 {
                     if(lastLetterStart.compareTo(c.getTitle().charAt(0)+"")!=0)
                     {
                         lastLetterStart = c.getTitle().charAt(0)+"";
-                        data.add(new UbersichtItem(lastLetterStart));
+                        data.add(new UbersichtItem(lastLetterStart.toUpperCase()));
                     }
                 }
                 data.add(new UbersichtItem(c));
             }
+            notifyDataSetChanged();
         }
 
 
@@ -129,10 +139,10 @@ public class FragmentUbersischt extends BaseFragment{
             switch (viewType)
             {
                 case 0:
-                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_letter_header, parent, false);
                     break;
                 case 1:
-                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_letter_header, parent, false);
+                    v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
                     break;
             }
 
@@ -141,8 +151,21 @@ public class FragmentUbersischt extends BaseFragment{
         }
 
         @Override
-        public void onBindViewHolder(ExhibitionViewHolder holder, int position) {
+        public void onBindViewHolder(ExhibitionViewHolder holder, final int position) {
             holder.text.setText(data.get(position).getText());
+
+            if(data.get(position).type != 0)
+                holder.text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FragmentDetails fragmentDetails = FragmentDetails.createInstance();
+                        Bundle b = new Bundle();
+                        b.putString(FragmentDetails.key,data.get(position).content.getJson());
+                        fragmentDetails.setArguments(b);
+                        ((Home)getActivity()).switchFragment(fragmentDetails);
+                    }
+                });
+
         }
         @Override
         public int getItemViewType(int position) {
