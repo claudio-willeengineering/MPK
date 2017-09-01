@@ -1,11 +1,14 @@
 package de.dfki.mpk.fragments;
 
 import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,7 +17,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+
 import java.io.IOException;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,6 +50,15 @@ public class FragmentFeedback extends BaseFragment {
     private static String mFileName = null;
     private MediaPlayer   mPlayer = null;
 
+
+
+    //Location Update
+    Location mostRecentLocation = null;
+
+    private FusedLocationProviderClient mFusedLocationClient = null;
+    boolean mRequestingLocationUpdates = false;
+
+
     public static FragmentFeedback createInstance()
     {
         if(FragmentFeedback.currentInstance == null)
@@ -57,6 +75,9 @@ public class FragmentFeedback extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_feedback,container,false);
+
+
+        mFusedLocationClient = new FusedLocationProviderClient(getActivity());
 
         mFileName = getActivity().getExternalCacheDir().getAbsolutePath();
         mFileName += "/mpkfeedback.mp3";
@@ -129,6 +150,14 @@ public class FragmentFeedback extends BaseFragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mRequestingLocationUpdates) {
+            startLocationUpdates();
+        }
+
+    }
 
     private void onRecord(boolean start) {
         if (start) {
@@ -186,4 +215,38 @@ public class FragmentFeedback extends BaseFragment {
         }
     }
 
+    private void startLocationUpdates() {
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+
+           LocationRequest mLocationRequest = new LocationRequest();
+
+
+            mFusedLocationClient.requestLocationUpdates(mLocationRequest,
+                    mLocationCallback,
+                    null /* Looper */);
+
+        }
+
+
+    }
+
+    LocationCallback mLocationCallback = new LocationCallback() {
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            for (Location location : locationResult.getLocations()) {
+
+            }
+        };
+    };
+
+
+    private void stopLocationUpdates() {
+
+        mFusedLocationClient.removeLocationUpdates(mLocationCallback);
+    }
+
+
 }
+

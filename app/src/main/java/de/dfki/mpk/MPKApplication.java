@@ -8,15 +8,12 @@ import android.util.Log;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.Profile;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOError;
-import java.io.IOException;
+import java.util.UUID;
 
-import de.dfki.mpk.utils.NetworkUtils;
+import de.dfki.mpk.model.FacebookModel;
 
 /**
  * Created by Olakunmi on 06/08/2017.
@@ -25,6 +22,8 @@ import de.dfki.mpk.utils.NetworkUtils;
 public class MPKApplication extends android.app.Application {
      private static final String FIRST_RUN  = "first_run";
      private static final String EMAIL  = "email";
+     private static final String UID = "UID";
+
 
     static AccessToken fbToken = null;
 
@@ -36,6 +35,23 @@ public class MPKApplication extends android.app.Application {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
+    public String getUserID()
+    {
+        synchronized (this){
+            if (!preferences.contains(UID)) {
+                String uniqueID = UUID.randomUUID().toString();
+
+                SharedPreferences.Editor editor = preferences.edit();
+
+                editor.putString(UID, uniqueID);
+                editor.apply();
+                editor.commit();
+                return uniqueID;
+            } else {
+                return preferences.getString(UID, null);
+            }
+        }
+    }
 
 
     public boolean isFirstRun()
@@ -59,13 +75,13 @@ public class MPKApplication extends android.app.Application {
         editor.commit();
     }
 
-    public void setFbToken(AccessToken token)
+    public void setFbToken(final AccessToken token)
     {
         GraphRequest request = GraphRequest.newMeRequest(
                 token,
                 new GraphRequest.GraphJSONObjectCallback() {
                     @Override
-                    public void onCompleted(final JSONObject object, GraphResponse response) {
+                    public void onCompleted(final JSONObject object, final GraphResponse response) {
                         Log.v("MPKApplication", response.toString());
 
                         // Application code
@@ -78,11 +94,17 @@ public class MPKApplication extends android.app.Application {
                                     @Override
                                     public void run() {
                                         try {
-                                            String response = NetworkUtils.post(NetworkUtils.FB_POST_URL,object.toString());
-                                        Log.d("Kunmi",response);
+
+                                            if(object != null)
+                                            {
+                                                FacebookModel model = new FacebookModel(getUserID(),object,getApplicationContext(), token);
+                                            }
+                                            //Log.d("Kunmi",response);
                                         }
-                                        catch (IOException e)
-                                        {e.printStackTrace();}
+                                        catch (Exception e)
+                                        {
+                                            e.printStackTrace();
+                                        }
                                     }
                                 }).start();
                             }
@@ -96,13 +118,50 @@ public class MPKApplication extends android.app.Application {
                 });
 
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,about,email,age_range,birthday,education," +
-                "first_name,last_name,middle_name,name,gender,hometown,inspirational_people,political,public_key,quotes," +
-                "relationship_status,religion,books,friends,likes,live_videos,movies," +
-                "music");
+        parameters.putString("fields", "" +
+                "id," +
+                "about," +
+                "email," +
+                "age_range," +
+                "birthday," +
+                "first_name,last_name,middle_name,name,gender," +
+                "hometown,inspirational_people,political,quotes," +
+                "relationship_status,religion," +
+                "education," +
+                "favorite_athletes," +
+                "favorite_teams," +
+                "sports");
         request.setParameters(parameters);
         request.executeAsync();
 
 
+/*        new GraphRequest(
+                token,
+                "me/education",
+                null,
+                HttpMethod.GET,
+                new GraphRequest.Callback() {
+                    public void onCompleted(GraphResponse response) {
+
+                        try {
+                            if (response.getConnection().getResponseCode() == 200) {
+                                if (response.getJSONObject() != null) {
+                                    //fbResultCollection.add(res);
+                                }
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+
+                }
+        ).executeAsync();
+
+*/
     }
+
+
+
 }

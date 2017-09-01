@@ -82,7 +82,7 @@ public class UtilsHelpers {
         return bitmap;
     }
 
-    public static JSONObject fromRawToJson(Activity context, int rawResource)
+    public static JSONObject fromRawToJson(Context context, int rawResource)
     {
         JSONObject jsonObject = null;
         try {

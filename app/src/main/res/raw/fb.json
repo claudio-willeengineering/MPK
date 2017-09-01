@@ -1,0 +1,36 @@
+{
+  "uid": "",
+  "id":"",
+  "email": "email",
+  "name": "",
+  "basic_info": {
+    "last_name": "",
+    "first_name": "",
+    "middle_name": "",
+    "gender": "",
+    "age_range": {},
+    "birthday": "",
+    "home_town": "",
+    "religion": "",
+    "political": "",
+    "about": "",
+    "relationship_status": "",
+    "quotes" : ""
+  },
+  "education": [],
+  "favourites": {
+    "favorite_athletes": [],
+    "favorite_teams": [],
+    "sports": [],
+    "books": [],
+    "movies": [],
+    "music": [],
+    "television": []
+  },
+  "friends":{
+    "no_friends":"", "list":[]
+  },
+  "likes": [],
+  "checkins": []
+}
+

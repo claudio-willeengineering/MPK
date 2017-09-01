@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PointF;
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,9 @@ import android.widget.FrameLayout;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,6 +53,8 @@ public class Home extends AppCompatActivity {
     HashMap<String,Topic> topics = new HashMap<>();
 
     List<Fragment> fragments = new ArrayList<>();
+
+
 
 
     @Override
@@ -179,10 +185,6 @@ public class Home extends AppCompatActivity {
             Intent i = new Intent(this, FirstScreenActivity.class);
             startActivity(i);
         }
-        else
-        {
-
-        }
 
     }
 
@@ -251,6 +253,9 @@ public class Home extends AppCompatActivity {
 
     }
 
+
+
+
     public List<Topic> getTopics() {
         List<Topic> ts = new ArrayList<>();
         ts.addAll(this.topics.values());
@@ -292,6 +297,8 @@ public class Home extends AppCompatActivity {
         return t;
 
     }
+
+
 
 
     @Override
