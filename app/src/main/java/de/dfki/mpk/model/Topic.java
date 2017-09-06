@@ -12,10 +12,9 @@ import org.json.JSONObject;
 
 public class Topic extends Content implements Comparable<Content>{
 
-    public Topic(JSONObject object)
+    public Topic(JSONObject object) throws JSONException
     {
         super(object.toString());
-        try {
             title = object.getString("title");
             id = object.getString("id");
             image = object.getString("image");
@@ -27,10 +26,6 @@ public class Topic extends Content implements Comparable<Content>{
             {
                 reference[i] =  ref.get(i).toString();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
     }
 
 

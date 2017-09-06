@@ -20,27 +20,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.Signature;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import de.dfki.mpk.utils.CustomViewPager;
+import de.dfki.mpk.utils.NetworkUtils;
 import de.dfki.mpk.utils.UtilsHelpers;
 
 
@@ -62,12 +67,21 @@ public class FirstScreenActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     AlertDialog fbDialog = null;
 
+    Calendar myCalendar = Calendar.getInstance();
+    EditText nameText = null;
+    Spinner ageSpinner = null;
+    LinearLayout nameQuestionLayout = null;
+    LinearLayout ageQuestionLayout = null;
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_screens);
 
-
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
@@ -85,8 +99,6 @@ public class FirstScreenActivity extends AppCompatActivity {
         }
 
 
-
-
         activity = this;
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -95,6 +107,14 @@ public class FirstScreenActivity extends AppCompatActivity {
         toolbar.setTitle(getString(R.string.app_name));
         toolbar.setSubtitle(R.string.first_screens_title);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+        getSupportActionBar().hide();
+
+
+
+
 
         List<int[]> content = new ArrayList<>();
 
@@ -142,6 +162,22 @@ public class FirstScreenActivity extends AppCompatActivity {
                     mViewPager.enableSwipe(false);
                 else
                     mViewPager.enableSwipe(true);
+
+
+                if(position == 4) {
+                    if (((MPKApplication) getApplication()).getFacebookApproved()) {
+
+                        nameQuestionLayout.setVisibility(View.GONE);
+                        ageQuestionLayout.setVisibility(View.GONE);
+                        //nameText.setText(((MPKApplication) getApplication()).getUserFullName())
+                    }
+                    else
+                    {
+                        nameQuestionLayout.setVisibility(View.VISIBLE);
+                        ageQuestionLayout.setVisibility(View.VISIBLE);
+                    }
+                }
+
             }
 
             @Override
@@ -193,12 +229,14 @@ public class FirstScreenActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mViewPager.setCurrentItem(2, true);
+                    ((MPKApplication)getApplication()).setBeaconPermission(true);
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
 
                 } else {
 
                     UtilsHelpers.showErrorDialog(this, getString(R.string.permission_denied_dialog_title), getString(R.string.permission_denied_dialog_body));
+                    mViewPager.setCurrentItem(2, true);
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                 }
@@ -216,6 +254,12 @@ public class FirstScreenActivity extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
+
     public class ScreenAdapter extends PagerAdapter {
 
             List<int[]> data = new ArrayList<>();
@@ -227,7 +271,7 @@ public class FirstScreenActivity extends AppCompatActivity {
 
             @Override
             public Object instantiateItem(ViewGroup container, final int position) {
-                View rootView;
+                final View rootView;
                 //Welcome
                 if (position == 0) {
 
@@ -235,19 +279,21 @@ public class FirstScreenActivity extends AppCompatActivity {
                 }
                 //Permission
                 else if (position == 1) {
-
+                    final MPKApplication application = (MPKApplication) getApplication();
                     rootView = getLayoutInflater().inflate(R.layout.f1st_fragment_app_permission, container, false);
                     rootView.findViewById(R.id.grantBeaconPermission).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
 
-                            Toast.makeText(activity,"Button Clicked",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(activity,"Button Clicked",Toast.LENGTH_SHORT).show();
 
                             ActivityCompat.requestPermissions(activity,
                                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                                             Manifest.permission.ACCESS_FINE_LOCATION},
                                     PERMISSION_LOCATION_AND_BEACONS);
                             mViewPager.enableSwipe(true);
+                            application.setBeaconPermission(true);
+
                         }
                     });
 
@@ -256,6 +302,8 @@ public class FirstScreenActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             mViewPager.enableSwipe(true);
                             mViewPager.setCurrentItem(position+1,true);
+                            application.setBeaconPermission(false);
+
                         }
                     });
                 }
@@ -268,15 +316,20 @@ public class FirstScreenActivity extends AppCompatActivity {
                     rootView.findViewById(R.id.grantBeaconPermission).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(!UtilsHelpers.isValidEmail(editText.getText()))
-                            {
-                                UtilsHelpers.showErrorDialog(activity,"Ungültige E-Mail",
-                                        "Bitte geben Sie eine gültige E-Mail-Adresse ein");
-                                return;
+
+
+                            if(editText.getText().toString().trim().compareTo("")!=0) {
+                                if (!UtilsHelpers.isValidEmail(editText.getText())) {
+                                    UtilsHelpers.showErrorDialog(activity, "Ungültige E-Mail",
+                                            "Bitte geben Sie eine gültige E-Mail-Adresse ein");
+                                    return;
+                                }
                             }
 
-                            ((MPKApplication)activity.getApplication()).setEmail(editText.getText().toString());
-                            mViewPager.setCurrentItem(position+1);
+                                if(editText.getText().toString().trim().compareTo("")!=0)
+                                ((MPKApplication) activity.getApplication()).setEmail(editText.getText().toString());
+                                ((MPKApplication) activity.getApplication()).setScienceApproval(true);
+                                mViewPager.setCurrentItem(position + 1);
 
                         }
                     });
@@ -287,6 +340,7 @@ public class FirstScreenActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             mViewPager.enableSwipe(true);
                             mViewPager.setCurrentItem(3,true);
+                            ((MPKApplication) getApplication()).setScienceApproval(false);
                         }
                     });
                 }
@@ -322,7 +376,6 @@ public class FirstScreenActivity extends AppCompatActivity {
                             dialog.setMessage(R.string.dialog_facebook_message);
 
 
-
                             dialog.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -340,25 +393,159 @@ public class FirstScreenActivity extends AppCompatActivity {
                         public void onCancel() {
                             UtilsHelpers.showErrorDialog(activity,getString(R.string.dialog_facebook_title),
                                     getString(R.string.dalog_facebook_error_cancel_message));
+                            LoginManager.getInstance().logOut();
+
                         }
 
                         @Override
                         public void onError(FacebookException exception) {
                             UtilsHelpers.showErrorDialog(activity,getString(R.string.dialog_facebook_title),
                                     getString(R.string.dalog_facebook_error_cancel_message));
+                            exception.printStackTrace();
                         }
                     });
                 }
 
                 else if(position == 4)
                 {
+                    final MPKApplication application = (MPKApplication) getApplication();
+
                     rootView = getLayoutInflater().inflate(R.layout.f1st_fragment_questionnaire, container, false);
 
+                    nameText = rootView.findViewById(R.id.nameBox);
+                    ageSpinner = (Spinner) rootView.findViewById(R.id.ageSpinner);
+                    nameQuestionLayout = rootView.findViewById(R.id.nameQuestion);
+                    ageQuestionLayout = rootView.findViewById(R.id.ageQuestion);
+                    final RadioGroup radioGroup = rootView.findViewById(R.id.radioGroup);
+
+
+                    final String[] ageRecommendation = { "Bitte wählen Sie","0-10", "10-20", "20-30", "30-40",
+                            "40-50", "50-60", "60-70", "70-80",
+                            "80 - 120" };
+
+                    ArrayAdapter<String> ageAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                            android.R.layout.simple_spinner_item,ageRecommendation);
+                    ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ageSpinner.setAdapter(ageAdapter);
+
+
+                    final Spinner recommSpinner = rootView.findViewById(R.id.recomSpinner);
+                    final String[] recommendation = { "Bitte wählen Sie","Anzeige in Zeitung", "Freunde/Empfehlung", "Internet", "Kino/Radio"};
+
+                    ArrayAdapter<String> recommAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                            android.R.layout.simple_spinner_item,recommendation);
+                    recommAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    recommSpinner.setAdapter(recommAdapter);
+
+                    if(((MPKApplication)getApplication()).getFacebookApproved())
+                    {
+                        nameText.setText(((MPKApplication) getApplication()).getUserFullName());
+                    }
 
                     rootView.findViewById(R.id.finishButton).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             ((MPKApplication)getApplication()).setHasRunOnce();
+
+                            if(((MPKApplication) getApplication()).getScienceApproved())
+                            {
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                JSONObject json = UtilsHelpers.fromRawToJson(getApplicationContext(), R.raw.survey);
+                                                json.put("uid", ((MPKApplication) getApplication()).getUserID());
+
+                                                if(application.getFacebookApproved())
+                                                {
+                                                    json.put("name", application.getUserFullName());
+                                                    json.put("age_range",application.getAgeRange());
+
+                                                }
+                                                else
+                                                {
+                                                    json.put("name", nameText.getText().toString());
+                                                    application.setUserFullName(nameText.getText().toString());
+
+                                                    if(ageSpinner.getSelectedItemPosition()> 0)
+                                                    {
+                                                        String age = ageRecommendation[ageSpinner.getSelectedItemPosition()];
+                                                        String[] ageRanges = age.split("-");
+                                                        json.getJSONObject("age_range").put("min",ageRanges[0]);
+                                                        json.getJSONObject("age_range").put("max",ageRanges[1]);
+
+                                                        application.setAgeRange(json.getJSONObject("age_range").toString());
+
+                                                    }
+                                                }
+
+                                                if(recommSpinner.getSelectedItemPosition()>0)
+                                                {
+                                                    json.put("referrer",recommSpinner.getSelectedItemPosition());
+                                                }
+
+                                                if(radioGroup.getCheckedRadioButtonId()>-1)
+                                                {
+                                                    switch (radioGroup.getCheckedRadioButtonId())
+                                                    {
+                                                        case R.id.tech:
+                                                            json.put("image_pref",1);
+                                                            application.setImagePreference(1);
+                                                            break;
+                                                        case R.id.secret:
+                                                            json.put("image_pref",2);
+                                                            application.setImagePreference(2);
+                                                            break;
+                                                        case R.id.body:
+                                                            json.put("image_pref",3);
+                                                            application.setImagePreference(3);
+                                                            break;
+                                                        case R.id.privacy:
+                                                            json.put("image_pref",4);
+                                                            application.setImagePreference(4);
+                                                            break;
+                                                    }
+                                                }
+
+                                                String response = NetworkUtils.post("http://uni-data.wearcom.org/submit/mpk_survey/",json.toString(),
+                                                        "05f3b3e07ea384041b4ecedb38d8ed0c");
+                                                Log.d(FirstScreenActivity.class.getSimpleName(),response);
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }).start();
+
+
+                                if(application.getScienceApproved())
+                                {
+                                    if(!application.getEmail().equals("")) {
+                                        new Thread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                try {
+                                                    JSONObject json = UtilsHelpers.fromRawToJson(getApplicationContext(), R.raw.email);
+                                                    json.put("email", application.getEmail());
+                                                    json.put("uid",application.getUserID());
+                                                    json.put("first_name", application.getFirstName());
+                                                    json.put("last_name", application.getLastName());
+                                                    json.put("gender",application.getGender());
+                                                    String response = NetworkUtils.post("http://uni-data.wearcom.org/submit/mpk_email/", json.toString(),
+                                                            "41e43baf17474aa23d2362993562d756");
+                                                    Log.d(FirstScreenActivity.class.getSimpleName(), response);
+                                                }
+                                                catch (Exception exp)
+                                                {
+                                                    exp.printStackTrace();
+                                                }
+                                            }
+                                        }).start();
+                                    }
+                                }
+                            }
                             activity.finish();
                         }
                     });
@@ -389,6 +576,8 @@ public class FirstScreenActivity extends AppCompatActivity {
                 container.removeView((LinearLayout) object);
             }
         }
+
+
 
 }
 

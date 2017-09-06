@@ -19,12 +19,12 @@ public class NetworkUtils {
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
 
-    public static String post(String url, String json) throws IOException {
+    public static String post(String url, String json, String token) throws IOException {
         OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)
-                .post(body).header("X-Auth-Token","0cbd834a8b99db006006d44f21e69e8b")
+                .post(body).header("X-Auth-Token",token)
                 .build();
         Response response = client.newCall(request).execute();
         return response.body().string();

@@ -1,89 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-
-    <TextView
-        android:id="@+id/titleTextBox"
-        style="@style/titleTextStyle"
-        android:text="@string/firstscreen_permissions_title"
-        android:layout_alignParentTop="true"/>
-
     <ScrollView
-        android:layout_below="@id/titleTextBox"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:background="@color/white">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_centerInParent="true"
-            android:padding="12dp"
+            android:padding="4dp"
             >
+
+            <ImageView
+                android:layout_gravity="left"
+                android:src="@drawable/line"
+                android:layout_width="150dp"
+                android:layout_height="15dp"
+                android:scaleType="fitCenter"/>
+
+            <LinearLayout
+                android:id="@+id/nameQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
             <TextView
                 android:id="@+id/aboutBody"
                 style="@style/contentBodyText"
-                android:lineSpacingExtra="2sp"
-                android:textSize="12sp"
-                android:text="@string/placeholder2"
+                android:text="@string/questionnair_question1"
+                />
+
+            <EditText
+                android:layout_marginTop="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/nameBox"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/inputBoxSize"
+                android:background="@drawable/edittextborder"
+                android:hint="name"
+                android:inputType="text"
+                />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ageQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                style="@style/contentBodyText"
+                android:text="@string/questionnaire_q2"
+                android:layout_marginTop="16dp"
+                />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/ageSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/inputBoxSize"
+                android:background="@drawable/edittextborder"
+                android:layout_marginTop="8dp"
+                />
+            </LinearLayout>
+
+            <TextView
+                style="@style/contentBodyText"
+                android:text="@string/questionnaire_q3"
+                android:layout_marginTop="16dp"
+                />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/recomSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/inputBoxSize"
+                android:background="@drawable/edittextborder"
+                android:layout_marginTop="8dp"
                 />
 
             <TextView
-                android:layout_marginTop="30dp"
                 style="@style/contentBodyText"
-                android:lineSpacingExtra="2sp"
-                android:textSize="12sp"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder2"
+                android:text="@string/questionnaire_q4"
                 />
 
-            <Spinner
-                android:id="@+id/spinner1"
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="10dp"/>
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_marginTop="30dp"
-                style="@style/contentBodyText"
-                android:lineSpacingExtra="2sp"
-                android:textSize="12sp"
-                android:text="@string/placeholder2"
-                android:layout_height="wrap_content"
-                />
+                        <RadioButton
+                        android:id="@+id/tech"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/tech"
+                            android:layout_marginTop="8dp"
+                            android:checked="true"/>
 
-            <Spinner
-                android:layout_marginTop="10dp"
-                android:id="@+id/spinner2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/placeholder"
-                android:scaleType="fitCenter"
-                />
+                        <RadioButton
+                            android:id="@+id/secret"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/secret"
+                            android:layout_marginTop="8dp"/>
+
+                        <RadioButton
+                            android:id="@+id/body"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/body"
+                            android:layout_marginTop="8dp"/>
+
+                        <RadioButton
+                            android:id="@+id/privacy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/privacy"
+                            android:layout_marginTop="8dp"/>
+
+            </RadioGroup>
+
 
 
             <Button
+                android:layout_marginTop="14dp"
                 android:id="@+id/finishButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Submit and Finish"
+                android:text="@string/first_fragment_questionnaire_submit"
                 android:layout_alignParentRight="true"
+                android:background="@color/torquious_dark"
+                android:textColor="@color/white"
                 />
 
         </LinearLayout>
@@ -93,7 +144,3 @@
 
     </ScrollView>
 
-
-
-
-</RelativeLayout>

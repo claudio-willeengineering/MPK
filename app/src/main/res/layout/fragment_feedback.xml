@@ -6,17 +6,8 @@
     android:gravity="center"
     android:background="@color/white"
     android:clickable="true"
+    android:paddingBottom="10dp"
     >
-
-    <TextView
-        style="@style/titleTextStyle"
-        android:text="@string/fragment_feedback_content_title"/>
-
-    <TextView
-        style="@style/contentBodyText"
-        android:text="@string/placeholder2"
-        android:layout_marginTop="30dp"
-    />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,10 +29,21 @@
             android:max="1000"
             android:progress="0"
             android:progressDrawable="@drawable/circular_progressbar" />
-
-
-
-
     </RelativeLayout>
+
+    <ImageView
+        android:layout_gravity="left"
+        android:src="@drawable/line"
+        android:layout_width="150dp"
+        android:layout_height="15dp"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:layout_marginTop="8dp"
+        style="@style/contentBodyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_feedback_text"/>
 
 </LinearLayout>

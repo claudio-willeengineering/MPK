@@ -1,0 +1,12 @@
+{
+  "timestamp": -1,
+  "audio": "",
+  "location": {
+    "type": "gps",
+    "position": {
+      "lon": -1,
+      "lat": -1
+    }
+  },
+  "uid": ""
+}

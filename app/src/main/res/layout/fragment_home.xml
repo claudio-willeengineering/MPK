@@ -13,23 +13,32 @@
         android:focusable="true"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:id="@+id/austellungButton">
+        android:id="@+id/austellungButton"
+        android:padding="2dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/mpk_illus5"
+            android:scaleType="fitXY"/>
+
+        <!--
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Ausstellungsplan" />
+            -->
 
         </LinearLayout>
-
+<!--
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_margin="4dp"
         android:layout_weight="0"
         android:background="@android:color/black" />
-
+-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,11 +50,20 @@
         android:gravity="center"
         android:id="@+id/ubersischtButton">
 
+        <!--
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Übersicht" />/>
+            -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/mpk_illus6"
+            android:scaleType="fitXY"/>
+
         </LinearLayout>
 
 

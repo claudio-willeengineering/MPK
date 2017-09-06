@@ -16,10 +16,10 @@ public class Exhibits extends Content implements Comparable<Content>{
     PointF pointF;
     int[] pixelCoord = new int[2];
 
-    public Exhibits(JSONObject object)
+    public Exhibits(JSONObject object) throws JSONException
     {
         super(object.toString());
-        try {
+
             id = object.getString("id");
             icon = object.getString("icon");
             image = object.getString("image");
@@ -36,9 +36,6 @@ public class Exhibits extends Content implements Comparable<Content>{
                 reference[i] =  ref.get(i).toString();
             }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
 

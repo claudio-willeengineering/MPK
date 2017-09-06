@@ -1,50 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="4dp"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:padding="12dp"
     >
-
-    <TextView style="@style/titleTextStyle"
-        android:text="@string/firstscreen_permissions_title"
-        android:layout_alignParentTop="true"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/beacon"
+            android:layout_height="270dp"
+            android:src="@drawable/mpk_illus2"
             android:scaleType="fitCenter"
             />
 
         <TextView
             android:id="@+id/aboutBody"
             style="@style/contentBodyText"
-            android:text="@string/placeholder2"
+            android:layout_marginTop="14dp"
+            android:text="@string/first_fragment_android_permission"
+            />
+        <TextView
+            android:id="@+id/aboutBody2"
+            style="@style/contentBodyText"
+            android:text="@string/first_fragment_android_permission_2"
+            android:textColor="@color/torquious_dark"
+            android:layout_marginTop="12dp"
             />
 
-    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="20dp">
+        android:layout_height="0dp"
+        android:paddingBottom="4dp"
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        >
 
         <Button
             android:id="@+id/grantBeaconPermission"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_yes"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentLeft="true"
+            android:background="@color/torquious_dark"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/denyBeaconPermission"
@@ -52,6 +55,8 @@
             android:layout_height="wrap_content"
             android:text="@string/text_no"
             android:layout_alignParentRight="true"
+            android:background="@color/torquious_dark"
+            android:textColor="@color/white"
             />
 
     </RelativeLayout>
@@ -59,4 +64,4 @@
 
 
 
-</RelativeLayout>
+</LinearLayout>

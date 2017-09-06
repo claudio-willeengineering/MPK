@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -162,7 +163,8 @@ public class FragmentUbersischt extends BaseFragment{
                         Bundle b = new Bundle();
                         b.putString(FragmentDetails.key,data.get(position).content.getJson());
                         fragmentDetails.setArguments(b);
-                        ((Home)getActivity()).switchFragment(fragmentDetails);
+
+                        ((Home)getActivity()).switchFragment(fragmentDetails, data.get(position).content.getJson());
                     }
                 });
 

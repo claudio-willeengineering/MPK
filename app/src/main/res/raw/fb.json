@@ -1,14 +1,14 @@
 {
   "uid": "",
   "id":"",
-  "email": "email",
+  "email": "",
   "name": "",
   "basic_info": {
     "last_name": "",
     "first_name": "",
     "middle_name": "",
     "gender": "",
-    "age_range": {},
+    "age_range": {"min":"", "max":""},
     "birthday": "",
     "home_town": "",
     "religion": "",

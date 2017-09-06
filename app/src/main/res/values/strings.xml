@@ -38,6 +38,19 @@
     <string name="fragment_feedback_content_title">Was haben Sie auf dem Herzen?</string>
     <string name="error_audio_dialog_title">Achtung</string>
     <string name="error_audio_dialog_body">Without Audio Permission, you cannot submit feedback</string>
+    <string name="first_fragment_welcome">In der Ausstellung „Ohne Schlüssel und Schloss“ tauchen Sie ein in die Welt der Ge heimnisse, Verschlüsselung und Daten erfassung sowie deren Bedeutung im Wan del der Zeit. Besonders heutzutage gehen wir mit unseren Daten viel zu oft viel zu offen um. Doch was kann uns dabei geschehen? In der Ausstellung werden Sie ein Gefühl für diese Thematik bekommen. Hierbei ist es voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</string>
+    <string name="first_fragment_android_permission">Viele Bestandteile der Ausstellung können Sie nur betrachten, wenn Sie der App die Erfas sung Ihres momentanen Standortes gestatten. Wir versprechen Ihnen, dass wir diese Daten nicht mit Dritten teilen und sie nicht für an dere Zwecke als die Ausstellung selbst nutzen</string>
+    <string name="first_fragment_android_permission_2">Sind Sie damit einverstanden, dass diese App auf Ihre Standortinforma­tionen zugreift?</string>
+    <string name="first_fragment_science_permission">Mit Ihrem Besuch endet die Ausstellung je doch noch nicht. Gemeinsam mit dem Deut schen Forschungszentrum für Künstliche In telligenz, werten wir alle gesammelten Daten am Ende der Ausstellung aus und veröffentli chen einen wissenschaftlichen Bericht, in dem Sie lernen können, was unsere Forschungs partner alles aus den Daten gelernt haben. Wenn Sie möchten, senden wir Ihnen diesen Bericht per Email zu – tragen Sie hierfür einfach Ihre Email Adresse in das folgende Feld ein.</string>
+    <string name="first_fragment_science_permission_2">Dürfen wir Ihre Daten im Rahmen der wissenschaftlichen Analyse verwenden?</string>
+    <string name="first_fragment_facebook_login">Nutzen Sie Facebook? Dann geben Sie wahr scheinlich mehr Daten über sich preis, als Sie wissen. Wir würden diese Daten gern im Rahmen der Ausstellung nutzen, um Ihnen deren Bedeutung vor Augen zu führen. Wenn Sie sich einmalig mit Ihrem Facebook Konto verbinden, bekommen Sie zum Dank einen Rabatt von X EUR auf den Eintrittspreis. Natürlich sendet diese App selbst keinerlei Daten zu Facebook und wird auch sonst nichts in Ihrem Namen veröffentlichen!</string>
+    <string name="first_fragment_questionnaire">Wir würden Sie gern etwas näher kennen lernen, um Ihnen einige Exponate in der Ausstellung besonders ans Herz legen zu können. Beantwort­en Sie hierfür doch bitte die folgenden Fragen – im Anschluss können Sie sofort mit der Nutzung der Ausstellungs App beginnen.</string>
+    <string name="first_fragment_questionnaire_submit">Abgeben</string>
+    <string name="fragment_feedback_text">Dies ist der Pass Bildschirm. Wofür und was auch immer für ein Text folgt. Hier jedenfalls nur Blindtext, der noch getextet wird. Frage, ob man den Homebutton türkis lässt oder auch gelb. Hier nur als Blindtext</string>
+    <string name="questionnair_question1">Verraten Sie uns bitte Ihren Namen</string>
+    <string name="questionnaire_q2">Wie alt sind Sie?</string>
+    <string name="questionnaire_q3">Wie sind Sie auf die Ausstellung aufmerksam geworden?</string>
+    <string name="questionnaire_q4">Welches der folgenden vier Bilder gefällt Ihnen spontan am besten?</string>
 
 
 </resources>

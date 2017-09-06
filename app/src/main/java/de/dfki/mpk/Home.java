@@ -1,28 +1,48 @@
 package de.dfki.mpk;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.Service;
+import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.graphics.PointF;
 import android.location.Location;
+import android.os.IBinder;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
-import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
+import com.willeengineering.sdk.WESBMSManager.SBMSBeacon;
+import com.willeengineering.sdk.WESBMSManager.SBMSEndUser;
+import com.willeengineering.sdk.WESBMSManager.SBMSLocation;
+import com.willeengineering.sdk.WESBMSManager.SBMSManager;
+import com.willeengineering.sdk.WESBMSManager.SBMSManagerCallback;
+import com.willeengineering.sdk.WEScanner.WEBeaconRangingService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,42 +50,95 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 
 import de.dfki.mpk.fragments.BaseFragment;
+import de.dfki.mpk.fragments.FragmentDetails;
 import de.dfki.mpk.fragments.FragmentFeedback;
 import de.dfki.mpk.fragments.FragmentPass;
 import de.dfki.mpk.fragments.Fragment_Home;
+import de.dfki.mpk.model.ExhibitTimeWrapper;
 import de.dfki.mpk.model.Exhibits;
 import de.dfki.mpk.model.Topic;
+import de.dfki.mpk.utils.ExponatIconHelper;
 import de.dfki.mpk.utils.UtilsHelpers;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity{
+
+    String TAG = Home.class.getSimpleName();
 
     private Toolbar toolbar;
     SubsamplingScaleImageView imageView;
     FrameLayout layout;
 
+    public Button passButton;
+    public Button feedbackButton;
+
+
     public JSONObject jsonData = new JSONObject();
-    HashMap<String,Exhibits> exhibits = new HashMap<>();
+    HashMap<String,ExhibitTimeWrapper> exhibits = new HashMap<>();
     HashMap<String,Topic> topics = new HashMap<>();
 
     List<Fragment> fragments = new ArrayList<>();
+    HashMap<String, Exhibits> recommendedExponats = new HashMap<>();
 
+
+    // MANDATORY!! Broadcast attributes //
+    LocalBroadcastManager bManager; // Broadcast manager
+
+
+    public static int REQUEST_ENABLE_BT = 1612;
+    ExponatIconHelper iconHelper = null;
+
+
+    //Location Update
+    Location mostRecentLocation = null;
+    private FusedLocationProviderClient mFusedLocationClient = null;
+    boolean mRequestingLocationUpdates = false;
+    List<Location> polygon = new ArrayList<>();
+    boolean isRequestingLocationUpdates = false;
+
+
+    String mostRecentBeacon;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
-
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        iconHelper = new ExponatIconHelper(this);
+
+        if(((MPKApplication)getApplication()).isFirstRun())
+        {
+            Intent i = new Intent(this, FirstScreenActivity.class);
+            startActivity(i);
+        }
+        else
+        {
+            /*
+            if(((MPKApplication) getApplication()).getBeaconPermission()) {
+                try {
+                    initSdk();
+                    //bindToAsandooService();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            */
+
+        }
+
 
         toolbar.setSubtitle(getString(R.string.home_title));
 
@@ -75,9 +148,8 @@ public class Home extends AppCompatActivity {
 
         jsonData = UtilsHelpers.fromRawToJson(this,R.raw.content);
         buildExhibitionItems();
-
-        switchFragment(Fragment_Home.createInstance());
-
+        Fragment_Home fragment_home = Fragment_Home.createInstance();
+        switchFragment(fragment_home, fragment_home.title );
 
         getSupportFragmentManager().registerFragmentLifecycleCallbacks(new FragmentManager.FragmentLifecycleCallbacks() {
             @Override
@@ -117,33 +189,35 @@ public class Home extends AppCompatActivity {
 
                         else
                         {
-                            switchFragment(Fragment_Home.createInstance());
+                            Fragment_Home  fragment_home1 = Fragment_Home.createInstance();
+                            switchFragment(fragment_home1,fragment_home1.title);
                         }
 
 
                     }
                 });
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        feedbackButton = (Button) findViewById(R.id.feedbackButton);
+        passButton = (Button) findViewById(R.id.passButton);
+
+        feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId())
-                {
-                    case R.id.action_pass:
-                        switchFragment(FragmentPass.createInstance());
-                        break;
-                    case R.id.feedback:
-                        switchFragment(FragmentFeedback.createInstance());
-                        break;
-                }
-                return false;
+            public void onClick(View view) {
+                FragmentFeedback fragmentFeedback = FragmentFeedback.createInstance();
+                switchFragment(fragmentFeedback, fragmentFeedback.title);
             }
         });
 
+        passButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentPass pass = FragmentPass.createInstance();
+                switchFragment(pass, pass.title);
+            }
+        });
 
-
+        mFusedLocationClient = new FusedLocationProviderClient(this);
 
     }
 
@@ -153,13 +227,12 @@ public class Home extends AppCompatActivity {
       }
 
       public void buildExhibitionItems(){
-
           try {
               JSONArray tops = jsonData.getJSONArray("topics");
               JSONArray exibs = jsonData.getJSONArray("exhibits");
               for(int i=0; i<exibs.length(); i++) {
                       Exhibits e = new Exhibits(exibs.getJSONObject(i));
-                      exhibits.put(e.getId(), e );
+                      exhibits.put(e.getId(), new ExhibitTimeWrapper(e, this) );
               }
               for (int i=0; i<tops.length(); i++)
               {
@@ -179,14 +252,15 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        if(((MPKApplication)getApplication()).isFirstRun())
+        if((!((MPKApplication)getApplication()).isFirstRun()) && ((MPKApplication)getApplication()).getBeaconPermission())
         {
-            Intent i = new Intent(this, FirstScreenActivity.class);
-            startActivity(i);
+            initSdk();
+            computeRecommendations();
+            startLocationUpdates();
         }
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -213,7 +287,18 @@ public class Home extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    public void switchFragment(BaseFragment frag)
+    @Override
+    protected void onDestroy() {
+        deInitSDK();
+        if (mRequestingLocationUpdates) {
+            stopLocationUpdates();
+        }
+        super.onDestroy();
+
+
+    }
+
+    public void switchFragment(BaseFragment frag, String name)
     {
 
         Fragment currFrag = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
@@ -222,8 +307,6 @@ public class Home extends AppCompatActivity {
             return;
         }
 
-
-
         if(fragments.contains(frag))
         {
             getSupportFragmentManager().popBackStack(frag.id,0);
@@ -231,8 +314,15 @@ public class Home extends AppCompatActivity {
         }
         else {
             // Add the fragment to the 'fragment_container' FrameLayout
-            frag.id = getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragmentContainer, frag).addToBackStack(frag.title).commit();
+            if(!(fragments instanceof FragmentDetails)) {
+                frag.id = getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentContainer, frag).addToBackStack(frag.title).commit();
+            }
+            else
+            {
+                frag.id = getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentContainer, frag).addToBackStack(name).commit();
+            }
         }
 
         if(! (frag instanceof Fragment_Home))
@@ -253,8 +343,10 @@ public class Home extends AppCompatActivity {
 
     }
 
-
-
+    public ExponatIconHelper getIconHelper()
+    {
+        return iconHelper;
+    }
 
     public List<Topic> getTopics() {
         List<Topic> ts = new ArrayList<>();
@@ -263,9 +355,34 @@ public class Home extends AppCompatActivity {
         return ts;
     }
 
+    public HashMap<String, Exhibits> getRecommendedExponats(){
+        return recommendedExponats;
+    }
+
+    public List<ExhibitTimeWrapper> getExhibitTimeWrappers(){
+        List<ExhibitTimeWrapper> es = new ArrayList<>();
+        for(ExhibitTimeWrapper e : exhibits.values())
+        {
+            es.add(e);
+        }
+        return es;
+    }
+
+    public ExhibitTimeWrapper getExhibitTimeWrapper(String id)
+    {
+        return exhibits.get(id);
+    }
+
+    public boolean containsExhibit(String id){
+        return exhibits.containsKey(id);
+    }
+
+
     public List<Exhibits> getExhibits() {
         List<Exhibits> es = new ArrayList<>();
-        es.addAll(this.exhibits.values());
+        for(ExhibitTimeWrapper e : this.exhibits.values()) {
+            es.add(e.getExhibits());
+        }
         Collections.sort(es);
         return es;
     }
@@ -278,7 +395,7 @@ public class Home extends AppCompatActivity {
         {
            if(exhibits.containsKey(r))
            {
-               e.add(exhibits.get(r));
+               e.add(exhibits.get(r).getExhibits());
            }
         }
         return e;
@@ -317,8 +434,29 @@ public class Home extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_ENABLE_BT){
+            if ((resultCode == RESULT_OK)){
+                startSdk();
+            }
+            else if ((resultCode == RESULT_CANCELED)){
+                //close the app
+                try {
+                    startSdk();
+                    //deInitSDK();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public boolean hasAudioPermission()
     {
+
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED)
@@ -327,5 +465,337 @@ public class Home extends AppCompatActivity {
             return true;
     }
 
+
+    void computeRecommendations(){
+        MPKApplication application = (MPKApplication) getApplication();
+        JSONObject recommendation = UtilsHelpers.fromRawToJson(this, R.raw.recommendation);
+
+        if(application.getGender().compareTo("")!=0) {
+            try {
+                JSONArray subrec = recommendation.getJSONArray(application.getGender());
+                JSONObject userAge = new JSONObject(application.getAgeRange());
+                String min = userAge.getString("min");
+                String max = userAge.getString("max");
+
+                int age = -1;
+                if(min != "")
+                {
+                    age = Integer.parseInt(min) + 3;
+                }
+                else
+                {
+                    age = Integer.parseInt(max) - 3;
+                }
+
+                JSONArray recommendationReferences = null;
+                for(int i=0; i< subrec.length(); i++)
+                {
+                    int minAge  =   subrec.getJSONObject(i).getInt("min_age");
+                    int maxAge  =   subrec.getJSONObject(i).getInt("max_age");
+                    if(age >= minAge && age <= maxAge)
+                    {
+                        recommendationReferences = subrec.getJSONObject(i).getJSONArray("recommendations");
+                        break;
+                    }
+                }
+
+                for(int i=0; i<recommendationReferences.length(); i++)
+                {
+                    String id = recommendationReferences.getString(i);
+                    if(exhibits.containsKey(id))
+                    {
+                        recommendedExponats.put(id,exhibits.get(id).getExhibits());
+                    }
+                }
+
+                switch (application.getImagePreference())
+                {
+                    case 1:
+                        recommendationReferences = recommendation.getJSONArray("technology");
+                        break;
+                    case 2:
+                        recommendationReferences = recommendation.getJSONArray("secret");
+                        break;
+                    case 3:
+                        recommendationReferences = recommendation.getJSONArray("body");
+                        break;
+                    case 4:
+                        recommendationReferences = recommendation.getJSONArray("privacy");
+                        break;
+                }
+
+                for(int i=0 ; i< recommendationReferences.length(); i++)
+                {
+                    String id = recommendationReferences.getString(i);
+                    if(exhibits.containsKey(id))
+                    {
+                        recommendedExponats.put(id,exhibits.get(id).getExhibits());
+                    }
+                }
+
+
+
+
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+        }
+        computeThreshHoldRecommendations();
+    }
+
+    void computeThreshHoldRecommendations()
+    {
+        MPKApplication application = (MPKApplication) getApplication();
+        JSONObject recommendation = UtilsHelpers.fromRawToJson(this, R.raw.recommendation);
+        try {
+            JSONObject long_stay = recommendation.getJSONObject("long_stay");
+            int threshhold = long_stay.getInt("threshold");
+            JSONObject items = long_stay.getJSONObject("items");
+
+            for(int i=0; i<items.names().length(); i++){
+                String key = items.names().getString(i);
+
+                if(exhibits.containsKey(key)){
+                    if((exhibits.get(key).getTimeSpent()/1000)>=threshhold)
+                    {
+                        JSONArray newlyRecommended = items.getJSONArray(key);
+                        for(int x=0; x< newlyRecommended.length(); x++)
+                        {
+                            String id = newlyRecommended.getString(x);
+                            if(exhibits.containsKey(id))
+                            {
+                                recommendedExponats.put(id, exhibits.get(id).getExhibits());
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        catch (JSONException ex)
+        {
+            ex.printStackTrace();
+        }
+
+    }
+
+    private void initSdk() {
+        if (!UtilsHelpers.isBluetoothAvailable()) {
+            Intent enableBtIntent =
+                    new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        }
+        else
+        {
+            startSdk();
+        }
+    }
+    void startSdk(){
+
+        /*
+        //Start the used services
+        startService(new Intent(this, WEBeaconRangingService.class));
+
+        bManager = LocalBroadcastManager.getInstance(this);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.willeengineering.sdk.WEScanner.SCAN_MESSAGE");
+        bManager.registerReceiver(bReceiver, intentFilter);
+
+        // Init SDK
+        SBMSManager.init(getApplicationContext());
+        SBMSManager.setCallback(mSBMSManagerCallback);
+        SBMSManager.setToken(MPKApplication.BEACON_TOKEN);
+*/
+
+    }
+
+    void deInitSDK(){
+        if(bManager!=null)
+        {
+            bManager.unregisterReceiver(bReceiver);
+            stopService(new Intent(this, WEBeaconRangingService.class));
+        }
+    }
+
+
+    ////////////// CALLBACKS /////////////
+    public final SBMSManagerCallback mSBMSManagerCallback = new SBMSManagerCallback() {
+        @Override
+        public void onEnteredSubplace(SBMSLocation sBMSLocation) {
+            Log.i(TAG, "onEnteredSubplace");
+
+            String subplaceId = sBMSLocation.getSubplaceId()+"";
+
+            String posXY = "";
+
+
+            for (int i1 = 0; i1 < sBMSLocation.getPosXY().size(); i1++) {
+                if (i1 > 0) {
+                    posXY = posXY + "; ";
+                }
+
+                posXY = posXY + sBMSLocation.getPosXY().get(i1).x + "/";
+                posXY = posXY + sBMSLocation.getPosXY().get(i1).y;
+            }
+
+            final String outputString = "onEnteredSubplace: " + sBMSLocation.getSubplaceId() + ",  mapId=" + sBMSLocation.getMapId() + ", posXY=" + posXY + " at " + sBMSLocation.getLocalTimestamp();
+
+            Log.i(TAG, outputString);
+        }
+
+        @Override
+        public void onExitedSubplace(SBMSLocation sBMSLocation) {
+            final String outputString = "onExitedSubplace: " + sBMSLocation.getSubplaceId() + " at " + sBMSLocation.getLocalTimestamp();
+
+            String id = sBMSLocation.getSubplaceId()+"";
+
+            Log.i(TAG, outputString);
+
+        }
+
+        @Override
+        public void onDebugMessage(String debugMessage) {
+            final String outputString = "onDebugMessage: " + debugMessage;
+
+            Log.i(TAG, outputString);
+
+        }
+
+    };
+
+    private BroadcastReceiver bReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals("com.willeengineering.sdk.WEScanner.SCAN_MESSAGE")) {
+                String action = intent.getStringExtra("action");
+                String uuid = intent.getStringExtra("uuid");
+                String major = intent.getStringExtra("major");
+                String minor = intent.getStringExtra("minor");
+                int rssi = intent.getIntExtra("rssi", SBMSBeacon.RSSI_DEFAULT_ERROR_VALUE);
+
+                String displayText = "";
+                //Do something with the string
+                Log.i(TAG, "onReceive: " + action + " " + major + " " + minor + " rssi " + rssi);
+                SBMSBeacon beacon = new SBMSBeacon(new Date().toString(), uuid, Integer.parseInt(major), Integer.parseInt(minor), rssi);
+                SBMSManager.manageCallbackEnteredBeacon(beacon);
+            }
+        }
+    };
+
+
+    public boolean amIVisible(Fragment fragment)
+    {
+
+        Fragment currFrag = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+        return fragment.equals(currFrag);
+    }
+
+
+    //Location
+    private void startLocationUpdates() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+
+            isRequestingLocationUpdates = true;
+
+            LocationRequest mLocationRequest = new LocationRequest();
+            mFusedLocationClient.requestLocationUpdates(mLocationRequest,
+                    mLocationCallback,
+                    null /* Looper */);
+
+            buildPolygon();
+
+        }
+
+
+    }
+
+    LocationCallback mLocationCallback = new LocationCallback() {
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            for (Location location : locationResult.getLocations()) {
+                mostRecentLocation = location;
+            }
+        };
+    };
+
+    private void stopLocationUpdates() {
+
+        mFusedLocationClient.removeLocationUpdates(mLocationCallback);
+        mRequestingLocationUpdates = false;
+    }
+
+
+    public void buildPolygon(){
+
+        try {
+            JSONArray array = UtilsHelpers.fromRawToJsonArray(this, R.raw.stub);
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject json = array.getJSONObject(i);
+                Location l = new Location("");
+                l.setLatitude(json.getDouble("la"));
+                l.setLongitude(json.getDouble("lo"));
+                polygon.add(l);
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            e.printStackTrace();
+        }
+    }
+    public boolean isInFence() throws JSONException
+    {
+        if(mostRecentLocation != null) {
+            int intersectCount = 0;
+            for (int j = 0; j < polygon.size() - 1; j++) {
+                if (rayCastIntersect(mostRecentLocation, polygon.get(j), polygon.get(j + 1))) {
+                    intersectCount++;
+                }
+            }
+            return ((intersectCount % 2) == 1); // odd = inside, even = outside;
+        }
+        else
+            return false;
+    }
+
+    private boolean rayCastIntersect(Location tap, Location vertA, Location vertB) {
+
+        double aY = vertA.getLatitude();
+        double bY = vertB.getLatitude();
+        double aX = vertA.getLongitude();
+        double bX = vertB.getLongitude();
+        double pY = tap.getLatitude();
+        double pX = tap.getLongitude();
+
+        if ((aY > pY && bY > pY) || (aY < pY && bY < pY)
+                || (aX < pX && bX < pX)) {
+            return false; // a and b can't both be above or below pt.y, and a or
+            // b must be east of pt.x
+        }
+
+        double m = (aY - bY) / (aX - bX); // Rise over run
+        double bee = (-aX) * m + aY; // y = mx + b
+        double x = (pY - bee) / m; // algebra is neat!
+
+        return x > pX;
+    }
+
+    public boolean isRecordingLocation()
+    {
+        return mRequestingLocationUpdates;
+    }
+
+    public Location getMostRecentLocation() {
+        return mostRecentLocation;
+    }
+
+    public String getMostRecentBeacon(){
+        return mostRecentBeacon;
+    }
 }
 

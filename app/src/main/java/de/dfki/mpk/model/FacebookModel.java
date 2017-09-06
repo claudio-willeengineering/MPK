@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Stack;
 
+import de.dfki.mpk.MPKApplication;
 import de.dfki.mpk.R;
 import de.dfki.mpk.utils.NetworkUtils;
 import de.dfki.mpk.utils.UtilsHelpers;
@@ -50,14 +51,21 @@ public class FacebookModel {
                 fbModel.put("id", json.getString("id"));
             if (json.has("email"))
                 fbModel.put("email", json.getString("email"));
-            if (json.has("name"))
+            if (json.has("name")) {
                 fbModel.put("name", json.getString("name"));
+                ((MPKApplication)context.getApplicationContext()).setUserFullName(json.getString("name"));
+            }
+
 
             JSONObject basicInfo = new JSONObject();
             basicInfo.put("last_name", json.has("last_name") ? json.getString("last_name") : "");
             basicInfo.put("first_name", json.has("first_name") ? json.getString("first_name") : "");
             basicInfo.put("middle_name", json.has("middle_name") ? json.getString("middle_name") : "");
             basicInfo.put("gender", json.has("gender") ? json.getString("gender") : "");
+
+            ((MPKApplication) context.getApplicationContext()).setGender(basicInfo.getString("gender"));
+            ((MPKApplication) context.getApplicationContext()).setLastName(basicInfo.getString("last_name"));
+            ((MPKApplication) context.getApplicationContext()).setFirstName(basicInfo.getString("first_name"));
 
             JSONObject ageObj = null;
             if(json.has("age_range")) {
@@ -72,6 +80,7 @@ public class FacebookModel {
                 tempObj.put("min", ageObj.has("min") ? ageObj.getString("min") : "");
                 tempObj.put("max", ageObj.has("max") ? ageObj.getString("max") : "");
                 basicInfo.put("age_range", tempObj);
+                ((MPKApplication) context.getApplicationContext()).setAgeRange(tempObj.toString());
             }
 
             basicInfo.put("birthday", json.has("birthday") ? json.getString("birthday") : "");
@@ -288,7 +297,7 @@ public class FacebookModel {
                 public void run() {
                     try {
 
-                        String response = NetworkUtils.post(NetworkUtils.FB_POST_URL,fbModel.toString());
+                        String response = NetworkUtils.post(NetworkUtils.FB_POST_URL,fbModel.toString(),"0cbd834a8b99db006006d44f21e69e8b");
                     Log.d(FacebookModel.class.getSimpleName(),response);
                     }
                     catch (Exception e)

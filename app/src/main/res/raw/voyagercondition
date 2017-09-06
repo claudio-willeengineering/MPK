@@ -1,0 +1,15 @@
+{
+  "time_treshold" : 60,
+  "single_conditions" : [
+    {
+      "id" : 28,
+      "text" : "Der Entscheidungsbaum muss komplett gespielt werden, während die App aktiv ist."
+    }
+  ],
+  "combined_conditions" : [
+    {
+      "ids" : [17, 18, 19, 20],
+      "text" : "Die folgenden Exponate müssen noch ausführlicher besucht werden, während die App aktiv ist: \n- Möbel mit Geheimverstecken \n- Tagebücher \n- Minnekästchen \n- Film über Rothschild-Truhe"
+    }
+  ]
+}

@@ -14,6 +14,7 @@
         android:gravity="right">
 
     <ImageView
+        android:id="@+id/discountImage"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/discount"
@@ -32,11 +33,21 @@
         android:layout_weight="1"
         android:scaleType="centerInside"
         />
-    
+
+
+    <ImageView
+        android:layout_gravity="left"
+        android:src="@drawable/line"
+        android:layout_width="150dp"
+        android:layout_height="15dp"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="4dp"/>
+
     <TextView
-        android:text="@string/placeholder2"
+        android:layout_marginTop="4dp"
         style="@style/contentBodyText"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="20dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_feedback_text"/>
 
 </LinearLayout>
