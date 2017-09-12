@@ -72,7 +72,7 @@ public class FragmentPass extends BaseFragment {
             int count2 = 0;
 
             //A visit is 5 seconds
-            int visitTime = 5;
+            int visitTime = 10;
 
             Home activity = (Home) getActivity();
             MPKApplication application = (MPKApplication) activity.getApplication();

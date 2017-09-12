@@ -138,11 +138,13 @@ public class FacebookModel {
 
 
 
+
             itemStack.push("likes");
             itemStack.push("friends");
             itemStack.push("movies");
             itemStack.push("music");
             itemStack.push("television");
+            itemStack.push("books");
 
             queryFB();
 

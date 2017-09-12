@@ -357,7 +357,7 @@ public class FirstScreenActivity extends AppCompatActivity {
                     "public_profile", "user_about_me","user_actions.books",
                             "user_actions.music", "user_actions.news",
                             "user_likes","user_religion_politics","user_tagged_places"
-                            , "user_friends, user_education_history");
+                            , "user_friends", "user_education_history");
 
 
                     // If using in a fragment
