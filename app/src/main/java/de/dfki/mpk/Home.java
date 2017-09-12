@@ -472,7 +472,7 @@ public class Home extends AppCompatActivity{
 
         if(application.getGender().compareTo("")!=0) {
             try {
-                JSONArray subrec = recommendation.getJSONArray(application.getGender());
+                JSONArray subrec = recommendation.getJSONObject("gender_age").getJSONArray(application.getGender());
                 JSONObject userAge = new JSONObject(application.getAgeRange());
                 String min = userAge.getString("min");
                 String max = userAge.getString("max");
