@@ -3,6 +3,7 @@ package de.dfki.mpk.fragments;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +21,7 @@ import de.dfki.mpk.utils.PanZoomImageView;
  */
 
 public class FragmentFloorPlan extends BaseFragment {
+    private String TAG = "FragmentFloorPlan";
     private static FragmentFloorPlan currentInstance = null;
     PanZoomImageView imageView = null;
 
@@ -61,21 +63,21 @@ public class FragmentFloorPlan extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_floorplan,container,false);
 
-        imageView = (PanZoomImageView) v.findViewById(R.id.floorplan);
+        imageView = v.findViewById(R.id.floorplan);
         imageView.setData(((Home)getActivity()).getExhibitTimeWrappers());
-        ((SubsamplingScaleImageView)imageView).setImage(ImageSource.resource(R.drawable.floorplan));
-
-        //imageView.setMinimumTileDpi(540);
+        imageView.setImage(ImageSource.resource(R.drawable.floorplan));
 
         imageView.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CUSTOM);
-        //imageView.setMaximumDpi(840);
         imageView.setMinimumDpi(450);
 
+        Log.i(TAG, "onCreateView: IMAGE LOADED");
+        
         imageView.setOnImageEventListener(new SubsamplingScaleImageView.OnImageEventListener(){
-
+        
+            
             @Override
             public void onReady() {
-
+                Log.i(TAG, "onReady: READY");
                 imageView.animateScaleAndCenter(0.3f, new PointF(5940, 2930))
                         .withDuration(2000)
                         .withEasing(SubsamplingScaleImageView.EASE_OUT_QUAD)
@@ -86,27 +88,28 @@ public class FragmentFloorPlan extends BaseFragment {
 
             @Override
             public void onImageLoaded() {
-
+                Log.i(TAG, "onImageLoaded: ");
             }
 
             @Override
             public void onPreviewLoadError(Exception e) {
+                Log.i(TAG, "onPreviewLoadError: ");
 
             }
 
             @Override
             public void onImageLoadError(Exception e) {
-
+                Log.i(TAG, "onImageLoadError: ");
             }
 
             @Override
             public void onTileLoadError(Exception e) {
-
+                Log.i(TAG, "onTileLoadError: ");
             }
 
             @Override
             public void onPreviewReleased() {
-
+                Log.i(TAG, "onPreviewReleased: ");
             }
         });
 

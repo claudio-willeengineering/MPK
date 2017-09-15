@@ -1,38 +1,31 @@
 package de.dfki.mpk;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
-import android.graphics.PointF;
 import android.location.Location;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Looper;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -40,7 +33,6 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.willeengineering.sdk.WESBMSManager.SBMSBeacon;
-import com.willeengineering.sdk.WESBMSManager.SBMSEndUser;
 import com.willeengineering.sdk.WESBMSManager.SBMSLocation;
 import com.willeengineering.sdk.WESBMSManager.SBMSManager;
 import com.willeengineering.sdk.WESBMSManager.SBMSManagerCallback;
@@ -54,7 +46,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 
@@ -73,6 +64,7 @@ import de.dfki.mpk.utils.UtilsHelpers;
 public class Home extends AppCompatActivity{
 
     String TAG = Home.class.getSimpleName();
+    Boolean DEBUG = true;
 
     private Toolbar toolbar;
     SubsamplingScaleImageView imageView;
@@ -624,8 +616,8 @@ public class Home extends AppCompatActivity{
     public final SBMSManagerCallback mSBMSManagerCallback = new SBMSManagerCallback() {
         @Override
         public void onEnteredSubplace(SBMSLocation sBMSLocation) {
-
             String subplaceId = sBMSLocation.getSubplaceId()+"";
+            if(DEBUG) Log.i(TAG, "onEnteredSubplace: ENTERED SUBPLACE " + subplaceId);
 
             if(containsExhibit(subplaceId))
             {
@@ -638,7 +630,7 @@ public class Home extends AppCompatActivity{
         public void onExitedSubplace(SBMSLocation sBMSLocation) {
 
             String subplaceId = sBMSLocation.getSubplaceId()+"";
-
+            if(DEBUG) Log.i(TAG, "onExitedSubplace: EXITED SUBPLACE " + subplaceId);
             if(containsExhibit(subplaceId))
             {
                 getExhibitTimeWrapper(subplaceId).Leave();
@@ -647,16 +639,23 @@ public class Home extends AppCompatActivity{
         }
 
         @Override
+        public void onStayedSubplace(SBMSLocation location) {
+            if(DEBUG) Log.i(TAG, "onStayedSubplace: STAYED SUBPLACE " + location.getSubplaceId());
+        }
+
+        @Override
         public void onDebugMessage(String debugMessage) {
             final String outputString = "onDebugMessage: " + debugMessage;
 
-            Log.i(TAG, outputString);
+            if(DEBUG) Log.i(TAG, outputString);
 
         }
 
     };
 
+    //// BROADCAST RECEIVER ////
     private BroadcastReceiver bReceiver = new BroadcastReceiver() {
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals("com.willeengineering.sdk.WEScanner.SCAN_MESSAGE")) {
@@ -665,15 +664,21 @@ public class Home extends AppCompatActivity{
                 String major = intent.getStringExtra("major");
                 String minor = intent.getStringExtra("minor");
                 int rssi = intent.getIntExtra("rssi", SBMSBeacon.RSSI_DEFAULT_ERROR_VALUE);
-
-                String displayText = "";
-                //Do something with the string
-                Log.i(TAG, "onReceive: " + action + " " + major + " " + minor + " rssi " + rssi);
                 SBMSBeacon beacon = new SBMSBeacon(new Date().toString(), uuid, Integer.parseInt(major), Integer.parseInt(minor), rssi);
-                SBMSManager.manageCallbackEnteredBeacon(beacon);
+                new AsyncBeaconUpdater().execute(beacon);
             }
         }
     };
+
+    private class AsyncBeaconUpdater extends AsyncTask<SBMSBeacon, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(SBMSBeacon... sbmsBeacons) {
+            SBMSManager.manageCallbackEnteredBeacon(sbmsBeacons[0]);
+            return true;
+        }
+
+    }
 
 
     public boolean amIVisible(Fragment fragment)
@@ -789,7 +794,6 @@ public class Home extends AppCompatActivity{
     }
 
     public void updateMapView(){
-
         if(FragmentFloorPlan.getFloorPlanImage() != null)
         {
 
