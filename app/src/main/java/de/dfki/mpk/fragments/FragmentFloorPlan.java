@@ -22,23 +22,21 @@ import de.dfki.mpk.utils.PanZoomImageView;
 
 public class FragmentFloorPlan extends BaseFragment {
     private String TAG = "FragmentFloorPlan";
+    private Boolean DEBUG = true;
+
     private static FragmentFloorPlan currentInstance = null;
     PanZoomImageView imageView = null;
 
-    public static FragmentFloorPlan createInstance()
-    {
-        if(currentInstance == null)
-        {
+    public static FragmentFloorPlan createInstance() {
+        if (currentInstance == null) {
             currentInstance = new FragmentFloorPlan();
             currentInstance.title = "Ausstellungsplan";
         }
         return currentInstance;
     }
 
-    public static PanZoomImageView getFloorPlanImage()
-    {
-        if(currentInstance != null)
-        {
+    public static PanZoomImageView getFloorPlanImage() {
+        if (currentInstance != null) {
             return currentInstance.imageView;
         }
         return null;
@@ -47,13 +45,11 @@ public class FragmentFloorPlan extends BaseFragment {
     boolean visible = false;
 
     @Override
-    public void setUserVisibleHint(boolean visible){
+    public void setUserVisibleHint(boolean visible) {
         super.setUserVisibleHint(visible);
-        if (visible && isResumed()){
+        if (visible && isResumed()) {
             visible = true;
-        }
-        else
-        {
+        } else {
             visible = false;
         }
     }
@@ -61,23 +57,23 @@ public class FragmentFloorPlan extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_floorplan,container,false);
+        View v = inflater.inflate(R.layout.fragment_floorplan, container, false);
 
         imageView = v.findViewById(R.id.floorplan);
-        imageView.setData(((Home)getActivity()).getExhibitTimeWrappers());
+        imageView.setData(((Home) getActivity()).getExhibitTimeWrappers());
         imageView.setImage(ImageSource.resource(R.drawable.floorplan));
 
         imageView.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CUSTOM);
         imageView.setMinimumDpi(450);
 
         Log.i(TAG, "onCreateView: IMAGE LOADED");
-        
-        imageView.setOnImageEventListener(new SubsamplingScaleImageView.OnImageEventListener(){
-        
-            
+
+        imageView.setOnImageEventListener(new SubsamplingScaleImageView.OnImageEventListener() {
+
+
             @Override
             public void onReady() {
-                Log.i(TAG, "onReady: READY");
+                if (DEBUG) Log.i(TAG, "onReady: READY");
                 imageView.animateScaleAndCenter(0.3f, new PointF(5940, 2930))
                         .withDuration(2000)
                         .withEasing(SubsamplingScaleImageView.EASE_OUT_QUAD)
@@ -88,28 +84,30 @@ public class FragmentFloorPlan extends BaseFragment {
 
             @Override
             public void onImageLoaded() {
-                Log.i(TAG, "onImageLoaded: ");
+                if (DEBUG) Log.i(TAG, "onImageLoaded: ");
             }
 
             @Override
             public void onPreviewLoadError(Exception e) {
-                Log.i(TAG, "onPreviewLoadError: ");
+                if (DEBUG) Log.i(TAG, "onPreviewLoadError: ");
 
             }
 
             @Override
             public void onImageLoadError(Exception e) {
-                Log.i(TAG, "onImageLoadError: ");
+                if (DEBUG) Log.i(TAG, "onImageLoadError: ");
             }
 
             @Override
             public void onTileLoadError(Exception e) {
-                Log.i(TAG, "onTileLoadError: ");
+
+                if (DEBUG) Log.i(TAG, "onTileLoadError: ");
             }
 
             @Override
             public void onPreviewReleased() {
-                Log.i(TAG, "onPreviewReleased: ");
+
+                if (DEBUG) Log.i(TAG, "onPreviewReleased: ");
             }
         });
 
@@ -119,7 +117,6 @@ public class FragmentFloorPlan extends BaseFragment {
                 return imageView.gestureDetector.onTouchEvent(motionEvent);
             }
         });
-
 
 
         return v;
