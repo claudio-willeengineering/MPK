@@ -21,6 +21,14 @@
                 android:layout_height="15dp"
                 android:scaleType="fitCenter"/>
 
+            <TextView
+                style="@style/contentBodyText"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_questionnaire_text"
+                android:textSize="12sp"
+                />
+
+
             <LinearLayout
                 android:id="@+id/nameQuestion"
                 android:layout_width="match_parent"
@@ -87,52 +95,78 @@
                 android:text="@string/questionnaire_q4"
                 />
 
-            <RadioGroup
+            <LinearLayout
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                        <RadioButton
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
                         android:id="@+id/tech"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/tech"
-                            android:layout_marginTop="8dp"
-                            android:checked="true"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:src="@drawable/tech"
+                        android:scaleType="fitCenter" />
 
 
-                        <RadioButton
-                            android:id="@+id/secret"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableRight="@drawable/secret"
-                            android:layout_marginTop="8dp"/>
+                    <ImageView
+                        android:id="@+id/secret"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/secret"
+                        android:scaleType="fitCenter" />
 
-                        <RadioButton
-                            android:id="@+id/body"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableRight="@drawable/body"
-                            android:layout_marginTop="8dp"/>
 
-                        <RadioButton
-                            android:id="@+id/privacy"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableRight="@drawable/privacy"
-                            android:layout_marginTop="8dp"/>
+                </LinearLayout>
 
-            </RadioGroup>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/body"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:src="@drawable/body"
+                        android:layout_weight="1"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="fitCenter"/>
+
+                    <ImageView
+                        android:id="@+id/privacy"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:src="@drawable/privacy"
+                        android:layout_weight="1"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="fitCenter"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
 
 
 
             <Button
-                android:layout_marginTop="14dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:id="@+id/finishButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/first_fragment_questionnaire_submit"
-                android:layout_alignParentRight="true"
                 android:background="@color/torquious_dark"
                 android:textColor="@color/white"
                 />

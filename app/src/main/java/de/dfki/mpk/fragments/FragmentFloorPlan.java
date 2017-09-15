@@ -21,6 +21,7 @@ import de.dfki.mpk.utils.PanZoomImageView;
 
 public class FragmentFloorPlan extends BaseFragment {
     private static FragmentFloorPlan currentInstance = null;
+    PanZoomImageView imageView = null;
 
     public static FragmentFloorPlan createInstance()
     {
@@ -32,15 +33,35 @@ public class FragmentFloorPlan extends BaseFragment {
         return currentInstance;
     }
 
+    public static PanZoomImageView getFloorPlanImage()
+    {
+        if(currentInstance != null)
+        {
+            return currentInstance.imageView;
+        }
+        return null;
+    }
 
+    boolean visible = false;
+
+    @Override
+    public void setUserVisibleHint(boolean visible){
+        super.setUserVisibleHint(visible);
+        if (visible && isResumed()){
+            visible = true;
+        }
+        else
+        {
+            visible = false;
+        }
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_floorplan,container,false);
 
-
-        final PanZoomImageView imageView = (PanZoomImageView) v.findViewById(R.id.floorplan);
+        imageView = (PanZoomImageView) v.findViewById(R.id.floorplan);
         imageView.setData(((Home)getActivity()).getExhibitTimeWrappers());
         ((SubsamplingScaleImageView)imageView).setImage(ImageSource.resource(R.drawable.floorplan));
 
@@ -55,7 +76,7 @@ public class FragmentFloorPlan extends BaseFragment {
             @Override
             public void onReady() {
 
-                imageView.animateScaleAndCenter(0.3f, new PointF(1500, 1000))
+                imageView.animateScaleAndCenter(0.3f, new PointF(5940, 2930))
                         .withDuration(2000)
                         .withEasing(SubsamplingScaleImageView.EASE_OUT_QUAD)
                         .withInterruptible(false)

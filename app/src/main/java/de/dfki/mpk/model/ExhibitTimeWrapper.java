@@ -55,8 +55,10 @@ public class ExhibitTimeWrapper {
 
     public void Enter()
     {
-        if(entrytime<0)
-        entrytime = System.currentTimeMillis();
+        if(entrytime<0) {
+            entrytime = System.currentTimeMillis();
+            updateMap();
+        }
     }
 
 
@@ -66,6 +68,7 @@ public class ExhibitTimeWrapper {
                 final Long[] visit = new Long[]{entrytime, System.currentTimeMillis()};
                 durations.add(visit);
                 resetTime();
+                updateMap();
 
                 new Thread(new Runnable() {
                     @Override
@@ -74,10 +77,11 @@ public class ExhibitTimeWrapper {
 
                             JSONObject jsonObject = UtilsHelpers.fromRawToJson(activity, R.raw.visits);
                             jsonObject.put("uid", ((MPKApplication) activity.getApplication()).getUserID());
-                            jsonObject.put("eid",exhibits.getId());
+                            jsonObject.put("eid",Integer.parseInt(exhibits.getId()));
                             jsonObject.put("sequence_number",durations.size());
                             jsonObject.put("checkin_time",visit[0]);
                             jsonObject.put("checkout_time",visit[1]);
+
 
                             String response = NetworkUtils.post("http://uni-data.wearcom.org/submit/mpk_visitor_journey/",
                                     jsonObject.toString(),
@@ -93,7 +97,7 @@ public class ExhibitTimeWrapper {
                     }
                 }).start();
 
-
+                ((Home) activity).computeThreshHoldRecommendations();
 
             }
 
@@ -101,6 +105,12 @@ public class ExhibitTimeWrapper {
 
     void resetTime(){
         entrytime = -1;
+    }
+    void updateMap()
+    {
+
+        ((Home)activity).updateMapView();
+
     }
 
     public boolean isNearBy()
@@ -116,7 +126,7 @@ public class ExhibitTimeWrapper {
 
     public Bitmap getIcon(){
         ExponatIconHelper helper = ((Home)activity).getIconHelper();
-        int icon = 1;
+        int icon = exhibits.icon;
 
         if(isNearBy()){
             return helper.getNearbyIcon(icon);

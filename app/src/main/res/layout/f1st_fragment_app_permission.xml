@@ -25,7 +25,7 @@
         <TextView
             android:id="@+id/aboutBody2"
             style="@style/contentBodyText"
-            android:text="@string/first_fragment_android_permission_2"
+            android:text="Dürfen wir Ihre Daten für wissenschaftliche Zwecke verwenden?"
             android:textColor="@color/torquious_dark"
             android:layout_marginTop="12dp"
             />

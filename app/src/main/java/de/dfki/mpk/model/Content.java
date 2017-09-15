@@ -38,6 +38,9 @@ public class Content {
     public String getText(){
         return text;
     }
+    public String getImage(){
+        return image;
+    }
 
 
 }

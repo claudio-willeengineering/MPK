@@ -19,8 +19,8 @@
         <ImageView
             android:id="@+id/exponatImage"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
+            android:layout_height="250dp"
+            android:scaleType="centerInside"
             android:src="@drawable/placeholder"/>
 
         <ImageView

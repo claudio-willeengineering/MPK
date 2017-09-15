@@ -12,7 +12,7 @@ import org.json.JSONObject;
  */
 
 public class Exhibits extends Content implements Comparable<Content>{
-    String icon;
+    int icon;
     PointF pointF;
     int[] pixelCoord = new int[2];
 
@@ -21,7 +21,7 @@ public class Exhibits extends Content implements Comparable<Content>{
         super(object.toString());
 
             id = object.getString("id");
-            icon = object.getString("icon");
+            icon = object.getInt("icon");
             image = object.getString("image");
             JSONObject pixel = object.getJSONObject("pixel_coords");
             pixelCoord[0] = pixel.getInt("x");

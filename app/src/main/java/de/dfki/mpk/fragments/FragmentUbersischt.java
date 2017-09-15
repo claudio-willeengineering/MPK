@@ -64,6 +64,10 @@ public class FragmentUbersischt extends BaseFragment{
         recyclerView.setLayoutManager(llm);
 
         TabLayout layout = v.findViewById(R.id.tabLayout);
+
+        adapter.setData(((Home) getActivity()).getExhibits());
+
+
         layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -88,10 +92,7 @@ public class FragmentUbersischt extends BaseFragment{
 
             }
         });
-
-
-
-
+        layout.removeTabAt(1);
 
         return v;
     }

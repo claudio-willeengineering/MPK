@@ -1,109 +1,700 @@
 {
 	"exhibits": [
 		{
-			"icon": "Icon_1.pn",
+			"icon": 2,
 			"id": 1,
-			"image": "Bild_1.png",
+			"image": "mpk_App_Exponat_1.png",
 			"pixel_coords": {
-				"x": 130,
-				"y": 140
+				"x": 5940,
+				"y": 2930
 			},
 			"references": [
 				3,
-				5
+				5,
+				7
 			],
-			"text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-			"title": "A1 Exponat"
+			"text": "Mein Gesicht hat mich verraten: Wie gut kann ein Computer die Fotografie eines Besuchers analysieren? In den meisten Fällen wird er das Geschlecht erkennen und auch einschätzen können, ob es sich um ein Kind oder einen Erwachsenen handelt. Gefühle werden gleichermaßen nach bestimmten Parametern der Gesichtsgeometrie zugeordnet. Den Unterschied zwischen einem „aufgesetzten Lächeln“ und echter Freude wird er wohl nicht erkennen, das ist zwar auch für viele Menschen schwierig, wird aber dennoch für Marketingzwecke genutzt. Freundliche Leihgabe des Lehrstuhls Mensch—Computer-Interaktion der Universität Stuttgart",
+			"title": "Gesichtserkennung"
 		},
 		{
-			"icon": "Icon_1.pn",
+			"icon": 2,
 			"id": 2,
-			"image": "Bild_2.png",
+			"image": "mpk_App_Exponat_2.png",
 			"pixel_coords": {
-				"x": 458,
-				"y": 435
+				"x": 6670,
+				"y": 3085
 			},
 			"references": [
-
+				39,
+				42
 			],
-			"text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-			"title": "A2 Exponat"
+			"text": "Mit unserer App erhalten Sie weiterführende Informationen zu unseren Ausstellungsstücken. Falls Sie mögen, können Sie sich Ihren Weg durch die Ausstellung mit Empfehlungen erleichtern. Zugleich sind Sie mit der App auch Teil eines Selbstexperiments, das Ihnen am Ende der Ausstellung sonst verborgene Mechanismen der Bewertung offenlegen wird. Entwickelt vom Deutschen Forschungsinstitut für Künstliche Intelligenz, Kaiserslautern ",
+			"title": "App Download"
 		},
 		{
-			"icon": "Icon_2.pn",
+			"icon": 2,
 			"id": 3,
-			"image": "Bild_3.png",
+			"image": "mpk_App_Exponat_3.png",
 			"pixel_coords": {
-				"x": 648,
-				"y": 857
+				"x": 6610,
+				"y": 2410
 			},
 			"references": [
 				1,
 				6
 			],
-			"text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-			"title": "B1 Exponat"
+			"text": "Melden Sie sich mit Facebook an und erhalten Sie einen Euro Rabatt auf den Eintrittspreis.",
+			"title": "Ticketkauf"
 		},
 		{
-			"icon": "Icon_1.pn",
-			"id": 4,
-			"image": "Bild_4.png",
+			"icon": 2,
+			"id": 5,
+			"image": "mpk_App_Exponat_5.png",
 			"pixel_coords": {
-				"x": 925,
-				"y": 128
+				"x": 5050,
+				"y": 2600
+			},
+			"references": [
+				24,
+				25
+			],
+			"text": "Die Wünsche von den Augen ablesen: Unser Exponat „errät“ die Wünsche des Benutzers, indem das System Blickpositionen erfasst und vergleicht, welche Objekte der Benutzer am längsten anschaut. Mit diesen Daten wird dann geschätzt, welches der Objekte auf dem Bildschirm den Benutzer am meisten interessiert. Wenn es sich dann um Dinge handelt, sind wir schon ganz in der Nähe des Ablesens von Wünschen von den Augen. Wenn wir unseren Blick schweifen lassen, geben wir mehr preis als uns bewusst ist. Was wir anschauen, wie lange wir etwas mit unserem Blick fixieren, wovon wir uns abwenden, verrät viel über unsere Interessen. Wenn wir einen Menschen gut kennen, können wir ihr oder ihm die Wünsche von den Augen ablesen. So ist zumindest die Formulierung in unserem Sprachgebrauch. Um die Wünsche eines anderen an dessen Augen ablesen zu können, müssen wir diesen Menschen sehr genau beobachten und am besten noch viel über diesen Menschen wissen. Mit speziellen Kamerasystemen können Computer die Blickrichtung und Blickbewegung eines Menschen sehr genau erfassen. Der Computer „weiß“ somit, wo der Mensch hinschaut, was der Mensch anschaut. Mit einem Programm können wir aufzeichnen und speichern, worauf ein Benutzer schaut, wie lange er auf ein Objekt sieht oder welche Bereiche eines Bildes am interessantesten für ihn ist. Bewegt man Objekte auf dem Bildschirm auf einer bestimmten Bahn, wird nachvollziehbar, ob der Benutzer mit seinem Blick diesem Objekt folgt. Die Technologien, die den Blick erfassen, sind in den letzten Jahren günstiger geworden und können vielfältig eingesetzt werden: in stationären Bildschirmen (z. B. am Computer oder Fernsehgerät) oder auch in mobilen Geräten (z. B. Mobiltelefon oder Datenbrille). Freundliche Leihgabe des Lehrstuhls Mensch-Computer-Interaktion der Universität Stuttgart",
+			"title": "Eye Tracking"
+		},
+		{
+			"icon": 2,
+			"id": 6,
+			"image": "mpk_App_Exponat_6.png",
+			"pixel_coords": {
+				"x": 5320,
+				"y": 1610
 			},
 			"references": [
 				5,
-				2
+				11,
+				12
 			],
-			"text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-			"title": "B2 Exponat"
+			"text": "Klaus Staeck (*1938)  zählt zu den bekanntesten Plakatkünstlern Deutschlands. Mit den vier apokalyptischen Reitern zitiert er eines der berühmtesten Werke von Albrecht Dürer (1471 – 1528). Die originale Arbeit gehört zu einer Serie von insgesamt 15 Holzschnitten, die Dürer zur Offenbarung des Johannes (Offb. 6, 1-8) geschaffen hat. Die vier Reiter verkörpern Pest, Krieg, Hunger und Tod. Bei Staeck ist jedem Reiter ein großes Internetunternehmen zugewiesen. Sind sie die neuen Vorboten des weltlichen Untergangs, der Apokalypse? Klaus Staecks Gesamtwerk umfasst mehrere hundert Plakate und Fotocollagen. Inhalte seiner Werke sind meist satirisch-ironische Kommentare zu politischen Themen. Oft beruft sich Staeck auf Arbeiten von Albrecht Dürer, welche er neu auffasst und kritisch in Bezug zur Gegenwart setzt. Bundesweit bekannt wurde Staeck 1971 durch sein Plakat mit Dürers Mutter, kombiniert mit der Frage: „Würden Sie dieser Frau ein Zimmer vermieten?“ Das eingefallene Gesicht der Frau mit diesem Untertitel macht deutlich, wie wenig ein alter, verbrauchter Mensch in das von Schönheitsidealen geprägte Bild unserer heutigen Gesellschaft passt. Klaus Staeck, Die apokalyptischen Reiter, nach Albrecht Dürer, 2014, Abdruck mit freundlicher Genehmigung von Klaus Staeck",
+			"title": "Apokalytische Reiter"
 		},
 		{
-			"icon": "Icon_1.pn",
-			"id": 5,
-			"image": "Bild_5.png",
+			"icon": 4,
+			"id": 7,
+			"image": "mpk_App_Exponat_7.png",
 			"pixel_coords": {
-				"x": 176,
-				"y": 98
+				"x": 5940,
+				"y": 2410
+			},
+			"references": [
+				17,
+				18,
+				20
+			],
+			"text": "Truhen dienen bereits seit dem Altertum als Behälter für persönlichen Besitz und Wertgegenstände. Entweder als Schrank, als transportables Behältnis oder auch in der Doppelfunktion als Sitzmöbel genutzt, entwickelte sich aus der Truhe im 19. Jahrhundert der Vorläufer unseres modernen Reisekoffers. Die Koffertruhe aus dem Bestand des mpk stammt aus dem 17./18. Jahrhundert und weist neben der Möglichkeit des Verschließens auch zwei Henkel zum Transport auf. Ihre Größe lässt genug Stauraum für Kleidung und Kostbarkeiten. Einer der eisernen Beschläge läuft in Form einer Lilienblüte aus, ein Symbol für die Jungfräulichkeit Marias. Es wurde als zusätzlicher Schutz verstanden. Die Erinnerung an göttliche Macht und mögliche Strafe sollte einen Dieb davon abschrecken, die Truhe zu plündern. Ausgehend von dieser Art Truhe, entwickelten sich vom 19. Jahrhundert an weitere Gepäckstücke, die noch stärker auf das Reisen ausgerichtet waren. Dazu zählen zum Beispiel Überseekoffer von Auswanderern, deren Material einer besonders langen Reise standhalten musste. Schließlich trat im 20. Jahrhundert der moderne Reisekoffer auf den Plan, der individuelle Bedürfnisse spiegelt und auch eine gewisse Selbstdarstellung ermöglicht. Sein Design und besonders sein Inhalt geben Auskunft über seinen Besitzer. Über Geschlecht, Modegeschmack, Lebensstil, finanziellen Stand bis hin zu Hobbys liefern moderne Analysen auch Aufschluss über den Charakter des Eigentümers. Heute wie in früherer Zeit achten wir darauf, unser Gepäck vor Diebstahl zu schützen. Dabei hat sich die Bemessung des Werts im Zuge industrieller und kostengünstiger Produktion deutlich geändert. Würde uns Kleidung gestohlen, wäre das im schlimmsten Falle ärgerlich, aber nicht von existenzieller Bedeutung. Die Bedeutung einer Koffertruhe lag hingegen im Schutz des gesamten persönlichen Besitzes, der sprichwörtlichen Existenz. Hohe Koffertruhe mit eisernem Beschlag, 17./18. Jh., Nadelholz, Eisen, mpk, Kunsthandwerkliche Sammlung ",
+			"title": "Koffertruhe"
+		},
+		{
+			"icon": 2,
+			"id": 8,
+			"image": "mpk_App_Exponat_8.png",
+			"pixel_coords": {
+				"x": 5430,
+				"y": 3210
+			},
+			"references": [
+				18,
+				22
+			],
+			"text": "Im Eingangsbereich sowie in allen weiteren Ausstellungsräumen zeigen wir immer wieder Schlüssel und Schlösser aus unterschiedlichen Zeiten. Ihre mechanische Präzision und handwerkliche Finesse begeistern neben der mitunter großen Liebe zum technischen Detail und zur formvollendeten Verzierung. Sie dienen in der Ausstellung als greifbares Bild für Techniken, die aus dem Bedürfnis des Bewahrens und der Versicherung entwickelt wurden. Wie die Objekte auch gestaltet sein mochten, ihre „Grenzziehung“ und damit ihr körperlicher Bezug ist auch heute noch auf einen Blick zu erfassen das gilt in dieser Weise nicht für Big Data, denn beim Digitalen handelt es sich um in der Regel unsichtbar ablaufende Prozesse, die wir selten unmittelbar verstehen können. Schlösser vom Mittelalter bis zum 18. Jahrhundert, mpk, Kunsthandwerkliche Sammlung",
+			"title": "Schlösser"
+		},
+		{
+			"icon": 1,
+			"id": 9,
+			"image": "mpk_App_Exponat_9.png",
+			"pixel_coords": {
+				"x": 4865,
+				"y": 2135
+			},
+			"references": [
+				10,
+				11,
+				44
+			],
+			"text": "Vom Problem zum Algorithmus:  Der Unterschied zwischen „Problem“ und „Algorithmus“ lässt sich mit folgender Situation vergleichen: Ein Chef gibt einem Lehrling einen detaillierten Auftrag (Problem). Der Lehrling hat nun verschiedene Möglichkeiten, den Auftrag zu erfüllen, und entscheidet sich für eine Methode (Algorithmus). Zur Verdeutlichung folgendes Beispiel: Der Auftrag des Chefs lautet, ein durchmischtes Kartenspiel zu sortieren. Der Lehrling kann die Karten nun auf verschiedene Arten sortieren, d.h. für das Sortieren gibt es ganz viele verschiedene Algorithmen. Ein Kartenspiel besteht aus den Farben Karo, Herz, Pik und Kreuz, die in dieser Reihenfolge sortiert werden sollen. Innerhalb einer Farbe kommen zuerst die Zahlen 7,8,9,10 und dann Bube, Dame, König und Ass. Wie können diese durch den Menschen sortiert werden? 1. Man könnte den gesamten, durchmischten Stapel einfach als lange Reihe vor sich auf den Tisch legen. Dann geht man so lange von links nach rechts durch und vertauscht benachbarte Paare von Karten miteinander, die noch „falsch herum“ liegen. Dies tut man, bis alle Karten korrekt sortiert sind. 2. Man nimmt die durchmischten Karten als Stapel in die Hand und sortiert zuerst nach Farben. Dann sortiert man jeden einzelnen Stapel, z.B. durch Hinlegen auf den Tisch an den ungefähren Ort, wo die jeweilige Karte hingehört. Dies ist bei 8 Karten pro Farbe relativ gut machbar, und wenn man die ersten Karten dabei zu eng gelegt haben sollte, macht man einfach ein bisschen Platz, indem man die Karten zur Seite schiebt. Bei dieser Methode wird also erst jede Farbe für sich sortiert und aufgestapelt. Dann stapelt man die einzelnen Farben in der korrekten Reihenfolge auf und setzt danach die jeweiligen Stapel in der richtigen Reihenfolge aufeinander. Es ist offensichtlich, dass beide Verfahren das korrekte Resultat liefern, diese Beschreibungen sind nun der eigentliche „Algorithmus“. Versuchen Sie sich nun selbst eine solche Handlungsanweisung zu überlegen, um die vor Ihnen liegenden Karten zu sortieren. So schaffen Sie Ihren ersten eigenen Algorithmus. Beachten Sie hierbei, dass die Handlungsschritte klar und eindeutig sind.Vielleicht finden Sie einen Partner, mit dem sie überprüfen können, welcher Algorithmus schneller ist: Der Wettkampf um die schnellste Sortierung ist eröffnet. Entwickelt vom Algorithm Accountability Lab der TU Kaiserslautern",
+			"title": "Algorithmus, was ist das?"
+		},
+		{
+			"icon": 1,
+			"id": 10,
+			"image": "mpk_App_Exponat_10.png",
+			"pixel_coords": {
+				"x": 4140,
+				"y": 2390
+			},
+			"references": [
+				11,
+				13
+			],
+			"text": "Was ist ein Entscheidungsbaum? Möchten Sie wissen, wie Algorithmen Ihre Kreditwürdigkeit ermitteln? Dann sind Sie bei diesem Ausstellungsstück richtig. Hier können Sie interaktiv erleben, wie sogenannte „Entscheidungsbäume“ durch Algorithmen entstehen, die auch Grundlage bei der Ermittlung Ihrer Kreditwürdigkeit wären. Sie erfahren, wie dieser populäre Mechanismus des maschinellen Lernens funktioniert - und welche Art von Fehlern er macht! Algorithmen ersetzen zunehmend Experten bei den unterschiedlichsten Fragestellungen und übernehmen ihre Aufgabe, menschliches Verhalten zu berechnen und vorherzusagen, um Entscheidungen vorzubereiten oder zu treffen. Diese Entwicklung hat vielerlei Gründe. So greifen Algorithmen im Vergleich zu einem menschlichen Experten bei ihren Entscheidungen auf eine Vielzahl von Erfahrungen zurück, die ein Einzelner unmöglich während seiner kurzen Lebensspanne erwerben könnte. Doch der Prozess vom Algorithmen-Design zum Aufbau von Entscheidungssystemen ist lang. Sie werden an diesem Ausstellungsstück erfahren, dass er durchaus fehleranfällig ist. Bei Entscheidungsprozessen wird meist eine Einordnung in zwei Klassen vorgenommen. Im Falle der Frage nach der Kreditwürdigkeit einer Person wäre dies: „zahlt den Kredit wahrscheinlich zurück“ oder „zahlt den Kredit wahrscheinlich nicht zurück“. Nehmen Sie hier selbst eine solche Klassifizierung vor: Vor Ihnen befindet sich ein vereinfachter Entscheidungsbaum, der Kugeln von unterschiedlicher Größe und Gewicht sortenrein trennen soll. Eine Kugel wird also - von oben nach unten – zu den einzelnen Entscheidungen geleitet und schlägt entsprechend der jeweiligen Ergebnisse einen bestimmten Weg ein. Letztendlich wird die Kugel also in eine Klasse eingeordnet. Doch welche das ist und in welcher Reihenfolge Sie diese Entscheidungen platzieren, bleibt Ihnen überlassen. Sollten Sie keine perfekte Trennung erreichen oder die Überprüfungen nicht exakt funktionieren, dann zweifeln Sie nicht an sich: In den meisten Fällen gibt es keine eindeutigen Entscheidungsregeln. So muss es unweigerlich zu Fehlentscheidungen kommen. Wie Sie erleben werden, ist es eine kniffelige Angelegenheit, die richtigen Entscheidungen an der richtigen Stelle zu platzieren. Aber stellen Sie sich nun einmal vor, ein solcher Entscheidungsbaum besteht nicht nur aus zwei Ebenen, sondern aus deutlich zahlreicheren. Sie ahnen, wie komplex solche Entscheidungssysteme werden können und wie schwierig es ist, die Ergebnisse maschineller Lernverfahren zu begründen. Aufgrund der Tatsache, dass es meist keine 100%igen Entscheidungsregeln gibt und es daher unweigerlich zu Fehleinschätzungen kommen kann, ist es dringend notwendig, algorithmisch basierte Entscheidungsfindung vor allem sozialer und ethischer Fragen gesellschaftlich breit zu diskutieren . Dabei geht es weit über das eingangs erwähnte Beispiel hinaus, bei dem zu entscheiden ist, welches Vorgehen favorisiert wird: Soll ein Algorithmus, der über Kreditwürdigkeit entscheidet, möglichst wenig Kredite vergeben oder ist es wichtiger, dass viele Personen die mit einem Kredit verbundene Chance bekommen, auch wenn darunter einige Kredite fälschlich vergeben werden und dann platzen? Doch was heißt es, wenn ein Algorithmus über die Rückfälligkeitswahrscheinlichkeit eines jungen Kriminellen entscheidet, und ein/e Richter/in daraufhin eine Gefängnis- statt einer Bewährungsstrafe ausspricht? Welche Fehlentscheidung wäre eher zu verantworten? Sollten hier wenige fälschlicherweise ins Gefängnis oder lieber wenige fälschlicherweise auf Bewährung freigelassen werden? An dieser Stelle bedanken wir uns herzlich bei Florian Schweizer, der maßgeblich an der Konzeption des Ausstellungsstücks beteiligt gewesen war.",
+			"title": "Entscheidungsbaum"
+		},
+		{
+			"icon": 1,
+			"id": 11,
+			"image": "mpk_App_Exponat_11.png",
+			"pixel_coords": {
+				"x": 3750,
+				"y": 2360
+			},
+			"references": [
+				7,
+				8,
+				18
+			],
+			"text": "Die Robo-Richter kommen: Heutzutage unterstützen algorithmische Prozesse nicht mehr nur die menschliche  Entscheidungsfindung. Nein! Mittlerweile nutzt man sie auch, um Menschen einzuschätzen und zu bewerten! Wussten Sie, dass hierbei fast keine Entscheidung mit hundertprozentiger Sicherheit gefällt wird? Meistens muss in der jeweiligen Anwendung abgewogen werden, welche Fehleinschätzung in Kauf genommen wird. Überzeugen Sie sich selbst: Stellen Sie sich vor, Sie wären beim Zoll und müssten unter den am Flughafen ankommenden Passagieren nach Schmugglern suchen. Studien haben gezeigt, dass Schmuggler viel unruhiger und mit einem nervöseren Gesichtsausdruck die Kontrolle passieren als normale Passagiere. Leider ist dieses Kriterium nicht eindeutig und die beiden Verteilungen, Passagiere und Schmuggler, überlappen sich. Um dieses Effekt zu erleben, können Sie am Ausstellungstück X selbst einmal festlegen, von welcher Nervositätsgrenze an Sie Passagiere kontrollieren wollen. Sie werden sehen, dass sich diese Entscheidung zu einer Gewissensfrage entwickelt: Kontrolliere ich deutlich zu viele und erwische so alle Schmuggler? Oder soll ich das Risiko von Schmuggelware in meinem Land eingehen und verdächtige weniger Passagiere? Grundsätzlich werden algorithmische Entscheidungssysteme herangezogen, wenn es darum geht, Gegenstände oder Personen in verschiedene - meist in zwei - Gruppen einzuteilen. In unserem Beispiel geht es also um die Frage: Schmuggelt dieser Passagier oder nicht? Auch wenn es hier nur zwei mögliche Antworten gibt, haben Algorithmen bei dieser Problemstellung mit denselben Fragen zu kämpfen wie menschliche Experten, denn die Größenverhältnisse der beiden Klassen sind meist sehr ungleich verteilt. So gibt es bei obigem Beispiel deutlich weniger Personen, die schmuggeln, als jene, die sich an die Gesetze halten. Da aber in den seltensten Fällen ein Entscheidungskriterium gefunden wird, das eine klare und eindeutige Einteilung ermöglicht, werden Kriterien herangezogen, die zwar für eine große Anzahl an Personen eine richtige Prognose liefern, aber eben nicht für alle, und es wird in Kauf genommen, einige Personen möglicherweise falsch einzuschätzen. Beschränkt sich der Einsatz dieser Systeme in Deutschland noch auf vergleichsweise harmlose Bereiche, wie die Einschätzung der Rückzahlmoral von Kunden bei der Kreditvergabe, werden in den USA bereits Algorithmen im Justizwesen beispielsweise zur Vorhersage der Rückfallwahrscheinlichkeit eines Angeklagten eingesetzt. Als Gesellschaft müssen wir uns also mit der Frage beschäftigen, welche falsche Kategorisierung wir tolerieren. In unserem Anwendungsfall zum Beispiel stellt der Algorithmus entweder viele unter Generalverdacht oder wir laufen Gefahr, Schmuggler in unser Land zu lassen. Entwickelt vom Algorithm Accountability Lab der TU Kaiserslautern",
+			"title": "Robo-Richter "
+		},
+		{
+			"icon": 1,
+			"id": 12,
+			"image": "mpk_App_Exponat_12.png",
+			"pixel_coords": {
+				"x": 2735,
+				"y": 2500
+			},
+			"references": [
+				14,
+				49
+			],
+			"text": "Es sind geheimnisumwitterte Insignien von historischer Bedeutung: die Instrumente der Verschlüsselung. Geheimdienste, Polizei, Militär nutzen sie in moderner Form auch heute. Die im Zweiten Weltkrieg eingesetzte Rotorschlüsselmaschine „Enigma“ aus dem Zweiten Weltkriegs gehört zu den wohl berühmtesten Beispielen, die zeigen, mit welch raffinierten Methoden man Kriegstaktiken übermittelte. Das Schweizer Modell, die  Enigma 4-Walzenmaschine, ist der legendären  Enigma- Chiffriermaschine ähnlich. Letztere wurde in den frühen 1920er Jahren vom deutschen Ingenieur Arthur Scherbius in Berlin entwickelt und zunächst für kommerzielle Zwecke vermarktet. Im 2. Weltkrieg wurden etwa 100.000 Exemplare der Enigma gebaut und bei Heer, Luftwaffe und Marine eingesetzt. Die Enigma war weltweit technisches Vorbild für eine ganze Generation von Rotor- Chiffriermaschinen – auch der deutschen Kriegsgegner. Nach jahrelangen Bemühungen wurde die Enigma- Verschlüsselung von britischen Kryptologen um den Computerpionier Alan Turing in einem hochgeheimen Projekt in Bletchley Park gebrochen. Tausende von Fachleuten waren hierzu erforderlich. Macht verband sich damals wie heute mit einem Wissensvorsprung. Die kontextgebundene Vorstellung der „Zeitzeugen“ regt an, einen weiteren Vergleich zur Gegenwart zu ziehen und im Idealfall eigenständig über aktuell mächtige (Daten–)Zentren nachzudenken. Enigma 4-Walzmaschine, Schweiz, freundliche Leihgabe des Heinz Nixdorf MuseumsForum, Paderborn",
+			"title": "Enigma"
+		},
+		{
+			"icon": 1,
+			"id": 13,
+			"image": "mpk_App_Exponat_13.png",
+			"pixel_coords": {
+				"x": 2870,
+				"y": 1440
+			},
+			"references": [
+				29,
+				36,
+				42
+			],
+			"text": "Mit dem LEGO®-Modell von Empolis wird eine industrielle Anlage simuliert, die aus einem Fließband, einem Bagger sowie einem Kipp-Laster besteht. Hierbei verladen und transportieren die LEGO®-Maschinen Stückgut − in diesem Fall Kugeln verschiedener Farbe − und sind sowohl äußeren Einflüssen, wie Hindernissen, als auch internem Verschleiß, etwa Getriebeabnutzung, ausgesetzt. Die Sensorik der Anlage erfasst bis zu einer Million Datenpunkte pro Minute und übermittelt diese in eine Big Data-Cloud. Auf Basis dieser Daten errechnet das System Prognosen zu möglichen Ausfällen und initiiert Wartungsprozesse. Unzählige Daten für einen, verglichen mit individuellem menschlichem Verhalten,  vergleichsweise festgelegten Ablauf. Wie hoch ist die Zuverlässigkeit der Prognosen? Freundliche Leihgabe von Empolis Information Management GmbH, Kaiserslautern",
+			"title": "Industrie 4.0"
+		},
+		{
+			"icon": 1,
+			"id": 14,
+			"image": "mpk_App_Exponat_14.png",
+			"pixel_coords": {
+				"x": 2240,
+				"y": 1900
+			},
+			"references": [
+				12,
+				17,
+				20
+			],
+			"text": "Der Film erzählt als Lego-Stop-Motion-Animation die historische Geschichte der Kryptographie von der Antike bis zur Gegenwart. Es werden dabei die verschiedenen Verschlüsselungsverfahren erläutert. Sogar historische Personen wie Julius Cäsar oder Maria Stuart spielen dabei eine wichtige Rolle. In unserer heute digitalen und vernetzten Welt ist die Kryptographie gar nicht mehr wegzudenken. Ob unsere PIN-Nummer, unsere Handy-Telefonate oder die Bestellung im Onlineshop: Fließen Daten durch das weltweite Netz, so werden diese verschlüsselt. Und wir vertrauen darauf, dass diese Verschlüsselung auch sicher ist. Aber wie werden die Daten verschlüsselt? Welche Verschlüsselungsverfahren gibt es und wie funktionieren diese? Und kann man sie nicht vielleicht doch knacken? Freundliche Leihgabe von Stefan Müller, Kaiserslautern",
+			"title": "Kryptlogie"
+		},
+		{
+			"icon": 2,
+			"id": 16,
+			"image": "mpk_App_Exponat_16.png",
+			"pixel_coords": {
+				"x": 5525,
+				"y": 2710
+			},
+			"references": [
+				30,
+				38
+			],
+			"text": "Spuren der Interaktion: Mit dem Exponat zeigen wir, dass mit einer Wärmebildkamera Spuren sichtbar gemacht werden können und wie dies ein potenzielles Risiko wird. So ist ein Muster, das wir zum Entsperren des Mobiltelefons benutzen, oder ein Passwort, das wir auf einer Tastatur eingeben, noch eine gewisse Zeit als Restwärme zu sehen. Die verwendeten Materialen und die Umgebungstemperatur haben natürlich einen Einfluss darauf, wie gut und wie lange die Spuren sichtbar bleiben.Wenn wir mit unserer Umwelt interagieren, hinterlassen wir Spuren. Wir gehen am Strand entlang und können, wenn wir zurück schauen unsere Spuren deutlich im Sand sehen. Viele Spuren, die wir hinterlassen, sind viel subtiler. Wenn wir einen Pfad im Wald entlang gehen, kann ein geschultes Auge das auch später noch erkennen, obwohl wir dort keine solchen offensichtlichen Spuren hinterlassen, wie bei einem Strandspaziergang. Mit empfindlichen Sensoren können mehr und mehr Spuren unseres Handelns sichtbar gemacht werden. Nehmen wir ein Glas vom Tisch, erfährt dieser eine kleine Erschütterung, die messbar ist. Öffnen wir die Tür, verändert sich messbar die Luftbewegung in der Wohnung. Entnehmen wir Wasser am Wasserhahn, können wir das mit Mikrophonen an den Leitungen erkennen. Berühren wir einen Gegenstand, z. B. eine Tastatur, mit der Hand, wärmen wir sie auf. Diese Erwärmung kann dann mit einer empfindlichen Wärmebildkamera sichtbar gemacht werden. Solche Spuren sind für das bloße Auge nicht wahrnehmbar, dennoch hinterlassen wir sie. Freundliche Leihgabe des Lehrstuhls Mensch—Computer-Interaktion der Universität Stuttgart",
+			"title": "Spuren"
+		},
+		{
+			"icon": 3,
+			"id": 17,
+			"image": "mpk_App_Exponat_17.png",
+			"pixel_coords": {
+				"x": 100,
+				"y": 3300
+			},
+			"references": [
+				18,
+				24,
+				30,
+				42
+			],
+			"text": "Spiegelaffäre: Was das BKA nicht findet. Dieser Sekretär spielte eine Rolle, als die Bundesanwaltschaft in einer Oktobernacht 1962 in Hamburg, im Rahmen der Spiegel-Affäre die Wohnungen von Redakteuren des Magazins nach Geheimakten durchsuchte. Der Vorwurf war, es sei mit solchem Material Landesverrat begangen worden. Die Beamten fanden zwar die beiden vorderen Geheimfächer des Sekretärs, nicht jedoch die von ihnen verdeckten hinteren. Auch Einbrecher, die Jahrzehnte später das Haus des Erben dieses Möbels heimsuchten, scheiterten bei der Suche. Vermutlich sind die hinteren Geheimfächer psychologisch dadurch geschützt, dass sie von den leichter auffindbaren vorderen verborgen werden. Sekretär, 1825 – 1840, Deutschland, Freundliche Leihgabe aus Privatbesitz",
+			"title": "Spiegelaffäre"
+		},
+		{
+			"icon": 3,
+			"id": 18,
+			"image": "mpk_App_Exponat_18.png",
+			"pixel_coords": {
+				"x": 1220,
+				"y": 3742
+			},
+			"references": [
+				36,
+				40,
+				19,
+				20
+			],
+			"text": "Tagebücher sind persönliche Selbstzeugnisse, sie enthalten Berichte über Erlebnisse, eigene Aktivitäten, Stimmungen und Gefühle. Als Mittel der Selbstvergewisserung zeichnen sie sich durch eine hohe Subjektivität aus. Unzweifelhaft, dass ihre Inhalte (zunächst) nicht für andere Leser und die Öffentlichkeit bestimmt sind. Daher werden sie häufig mit einem Schloss versehen. Das Tagebuch der Agnes Balser, geb. Dieffenbach, Ehefrau des Obermedizinalrates Dr. August Balser, Darmstadt, wurde vom 1. Januar 1915 bis zum 1. April 1916 geführt. Es enthält neben allgemeinen Informationen über den Verlauf des Ersten Weltkrieges und eingeklebten Zeitungsausschnitten zahlreiche persönliche Eindrücke und Erlebnisse an der sogenannten Heimatfront. Vielfach zitiert Agnes Balser aus Briefen ihres Sohnes Eduard und anderer Kriegsteilnehmer.Hier einige Auszüge aus dem Tagebuch: 1.1.1915: Ein grosses Jahr liegt hinter uns. Möge ein grösseres folgen und unsere hinterlistigen Feinde bestraft werden für ihre Verbrechen an der Europäischen Kultur. 26.1. 1915: Der Bundesrat hat Verordnungen erlassen zur Regelung des Verkehrs mit Brotgetreide und Mehl. Von heute ab treten sie schon in Kraft. Diese Verordnungen sind mit Freude zu begrüssen, denn das Volk lebt wie die Kinder in den Tag hinein, es begreift den Ernst der Lage nicht. 6.12.1915: Landsturmmann Pfeifer schreibt aus Nowo Minsk: \"Es ist völlig Winter hier es schneit fortwährend. Diese Woche sind aus der Gegend von Friedrichstadt Flüchtlinge zurück transportiert worden, das waren meistens Leute von greisem Alter bis zum jüngsten Kinde. Es war herzzerreissend, wenn man das sieht. Ihr bisschen Hab und Gut im Arm... man hätte mitweinen können. Ich bin nur froh, dass ihr.. in Deutschland das nicht mitzumachen braucht, solch eine Demütigung durch die Russen...\" 8.2.1916: Sehr erschüttert hat mich in Alzey der tägliche dumpfe Kanonendonner, der bei Südwestwind von den Argonnen herüberschallt...\"",
+			"title": "Tagebuch"
+		},
+		{
+			"icon": 3,
+			"id": 19,
+			"image": "mpk_App_Exponat_19.png",
+			"pixel_coords": {
+				"x": 100,
+				"y": 2900
+			},
+			"references": [
+				17,
+				18,
+				20,
+				21,
+				22
+			],
+			"text": "Mittelalterliche Minnekästchen sind geschnitzte kleine Miniaturtruhen, die als Geschenk eines Verehrers an eine Dame dienten und dessen Zuneigung offenbarten. Inhalt waren Liebesbriefe oder Haarlocken, die zusammen mit anderen Geschenken wie Kämmen, Schmuck oder Arzneien als persönliche Liebesgabe überreicht wurden. Weniger häufig wurde ein solches Geschenk auch vom Gatten oder Bräutigam als Liebesbeweis erbracht. Eine dritte Möglichkeit der Zuwendung waren Freundschaften oder Schenkungen zu besonderen Anlässen wie etwa Neujahr. Motive und Material für Minnekästchen konnten je nach Ort und Zeit stark variieren. Das Kästchen aus dem Bestand des mpk stammt aus Deutschland, es wurden aber auch in Frankreich und Italien Minnekästchen gefertigt. Als profane Gegenstände spiegeln sie die höfisch-sittliche Kultur des mittelalterlichen Adels, in der die Minne im Sinn romantischer Liebe eine wichtige Rolle spielte. Die handgefertigte, künstlerische Gestaltung der Minnegaben war aufwendig und ergab neben ihrer persönlichen Bedeutung deren messbaren Wert. mpk, Kunsthandwerkliche Sammlung und Schell Collection, Graz",
+			"title": "Minnekästchen"
+		},
+		{
+			"icon": 3,
+			"id": 20,
+			"image": "mpk_App_Exponat_20.png",
+			"pixel_coords": {
+				"x": 305,
+				"y": 3742
+			},
+			"references": [
+				22,
+				29
+			],
+			"text": "Johann Gottlieb Wittmann wurde 1733 mit dieser Truhe zum Meister, wie die Signatur auf der Schlossabdeckplatte belegt. Gefertigt wurde das,  im wahrsten Sinne des Wortes,  Meisterstück mit 26 Riegeln und einer Ablassfalle sowie einem aufwendigen Vexier vor dem Schlüssellosch in der Werkstatt des Schlossermeisters Sigmund Falckenhauer in Straßburg. Das Kurzvideo zeigt mit welchen raffinierten Vorrichtungen man möglichen Dieben die Lust zum unerlaubten Aufbrechen nahm, in dem man die brenzlige Zeit des Entdeckens ins gefühlt Unendliche zog. Freundliche Leihgabe Schell Collection Graz, Regie: Laura Staudinger",
+			"title": "Rothschildtruhe"
+		},
+		{
+			"icon": 3,
+			"id": 21,
+			"image": "mpk_App_Exponat_21.png",
+			"pixel_coords": {
+				"x": 620,
+				"y": 2970
+			},
+			"references": [
+				18,
+				19
+			],
+			"text": "Pankraz Körle, Der Galanthomme, um 1874/75: Das Interieur-Gemälde im Stil des Rokoko zeigt einen Kavalier, der seiner Angebeteten in einem romantischen Annäherungsversuch ein Marzipanherz als Liebesgabe überreicht. Lächelnd erwidert sie seine Avancen mit einer Spielkarte in ihrer Hand: das aufgedeckte Herz-Blatt. Wir erfahren diese sehr intim anmutende Szene als stille, unbeabsichtigte Beobachter. Wohlwollend fällt der Blick dabei auf das romantische Geschehen und den hingerissenen Blick der jungen Frau im ausladenden, spitzenbesetzten Kleid. Ihr Ausdruck mag in uns Erinnerungen wecken an selbst erlebte, ähnliche Gefühlssituationen. Süße Geschenke für die Angebetete – zum Valentinstag auch heute noch in Herzform – haben sich auch in unserer modernen Gesellschaft erhalten. Die im Bild dargebotene Vorstellung eines „Galanthomme“, des Kavaliers, der sich vom mittelalterlichen Reiter über den adligen Ritter, vom tugendhaften Mann und Beschützer der Damen gewandelt hat, ist heute selten. Nichts desto trotz steht der Galanthomme auch heute für Herren mit höflichen Umgangsformen und guten Manieren, mit besonderen Charme. Motive, wie das des werbenden Kavaliers wurden in Darstellungen der im 19. Jahrhundert aufkommenden Rokokorezeption aufgegriffen. Die ursprünglich zwischen 1720 und 1780 im französischen Barock entstandene Stilrichtung erfuhr zu dieser Zeit eine positive Resonanz, die sich auf Motive, Themen und Malweisen erstreckte. Der gebürtige Münchner Pankratz Körle hatte sich auf die Kostümmalerei im Stil des Rokoko spezialisiert und verkaufte seine Gemälde sehr erfolgreich bis nach Amerika. mpk, Gemäldesammlung",
+			"title": "Galanthomme"
+		},
+		{
+			"icon": 3,
+			"id": 22,
+			"image": "mpk_App_Exponat_22.png",
+			"pixel_coords": {
+				"x": 100,
+				"y": 2490
+			},
+			"references": [
+				7,
+				18,
+				37,
+				26
+			],
+			"text": "Die Verbreitung und Anwendung von  Keuschheitsgürteln ist unter Historikern äußerst umstritten. Während einige Quellen die Verwendung bis ins alte Ägypten zurückzuverfolgen glauben, gibt es inzwischen auch Behauptungen, dass Keuschheitsgürtel eine Erfindung des viktorianischen Zeitalters und die angeblich aus dem Mittelalter stammenden Exemplare allesamt Fälschungen seien. Vermutlich stammte die Erfindung jedoch aus der Zeit der italienischen Frührenaissance („Florentiner Gürtel“). Es ist also keineswegs wissenschaftlich gesichert, dass die Ritter - während sie sich auf Kreuzzug befanden - ihre Gattinnen und eventuelle Mätressen in Eisen legten, um deren Treue und Keuschheit während ihrer Abwesenheit sicherzustellen. Jedem realistisch denkenden Menschen sollten sich massive Zweifel an diesen Geschichten aufdrängen. Sicherlich hätte das blanke Eisen, eng anliegend auf der bloßen Haut getragen, diese binnen weniger Tage wundgescheuert und unter Bedachtnahme auf die damaligen hygienischen Verhältnisse wäre wohl jede Trägerin innerhalb kurzer Zeit aufgrund von Infektionen gestorben. Unumstritten ist dagegen die Tatsache, dass es seit mehreren Jahrhunderten Vorrichtungen gibt (eines der letzten Patente dafür stammt aus dem Jahr 1903), die die Geschlechtsorgane der Frauen abdecken sollen, ohne die Verrichtung der Notdurft unmöglich zu machen. Modelle mit etwas mehr Tragekomfort waren mit Leder oder sogar mit Samt gepolstert, wobei das Grundproblem der Hygiene dadurch sicherlich verschärft wurde. Einleuchtend klingt jedoch die These, dass sich manche Frauen der vergangenen Jahrhunderte diesen Keuschheitsgürtel bei Bedarf selbst anlegten, um bei Raubzügen oder Überfällen durch irgendwelche Feinde oder bei weiten Reisen gegen drohende Vergewaltigungen geschützt zu sein. Eine weitere Theorie besagt, dass Keuschheitsgürtel als Folter- und Marterinstrumente verwendet oder in Nonnenklöstern als Instrumente der Zucht benutzt wurden. Vermutlich hat ein großer Teil der erhaltenen Keuschheitsgürtel lediglich der Repräsentation- und Sammeltätigkeit gedient und war nie in Gebrauch. Auch die Vermutung, dass die Schlossermeister früherer Jahrhunderte an der Anfertigung von Nachschlüsseln ein kleines Vermögen verdient hätten, dürfte zu den vielen Märchen über dieses Martergerät zählen. Keuschheitsgürtel, Süddeutschland / Österreich, 19. Jh., freundliche Leihgabe Schell Collection Graz",
+			"title": "Keuschheitsgürtel"
+		},
+		{
+			"icon": 3,
+			"id": 23,
+			"image": "mpk_App_Exponat_23.png",
+			"pixel_coords": {
+				"x": 305,
+				"y": 1740
+			},
+			"references": [
+				24,
+				1
+			],
+			"text": "Beinah lebensecht erscheint diese kleine Männerfigur trotz ihrer merkwürdigen Schichtungen. Die international anerkannte Berliner Künstlerin Karin Sander hat schon 1998 hochmoderne, in der Textilindustrie verwendete Computertechnologie eingesetzt. Anhand dieses und zahlreicher vergleichbarer Portraits verfolgt sie jenseits der Darstellung einer bestimmten Person die Frage nach dem Verhältniss von Mensch und Maschine. Letztere bildet die Grundlage für die genaue Umsetzung der Figur: In einem Bodyscanner mit Laserkameras exakt vermessen, auf ein Verhältnis 1:10 umgerechnet und im 3D Drucker aus vielen, feinen Schichten als Kunststoffkörper wieder aufgebaut, erscheint eine Miniaturausgabe des jeweiligen Menschen. Eine Airbrush-Bemalung verleiht der sonst weißen Figur ihre Lebendigkeit. Es gibt keinen Künstler mehr, der von Angesicht zu Angesicht, sein Modell interpretiert. Ersetzt exakte Messtechnik den subjektiven Blick, maximale Nachprüfbarkeit die Darstellung der Seele? Nun, im Ergebnis entfaltet die Figur ein erstaunliches Eigenleben. Doch ist es allein das menschliche Auge, welches sofort kleine Gesten und individuelle Besonderheiten zu einem Menschen mit Leib und Seele imaginiert. Karin Sander, Figur Rudolf Bernert, 1998, mpk, Skulpturensammlung",
+			"title": "Digitale Portaits"
+		},
+		{
+			"icon": 3,
+			"id": 24,
+			"image": "mpk_App_Exponat_24.png",
+			"pixel_coords": {
+				"x": 235,
+				"y": 1294
+			},
+			"references": [
+				23,
+				25,
+				26
+			],
+			"text": "3D-Bodyscanner erfassen sekundenschnell den menschlichen Körper und liefern ein exaktes dreidimensionales Abbild inklusive genauer Körpermaße. So kann ein Mensch frühzeitig Teil der Produktentwicklung werden, zum Beispiel in der Bekleidungs- und Fahrzeugindustrie. Das Unternehmen Human Solutions mit Sitz in Kaiserslautern ist Technologieführer im Bereich Bodyscanning. Freundliche Leihgabe von Human Solutions GmbH, Kaiserslautern",
+			"title": "Bodyscanner"
+		},
+		{
+			"icon": 3,
+			"id": 25,
+			"image": "mpk_App_Exponat_25.png",
+			"pixel_coords": {
+				"x": 1220,
+				"y": 1237
+			},
+			"references": [
+				23,
+				24,
+				26
+			],
+			"text": "Der Online-Shop der Zukunft kennt die richtigen Größen und Passformen all seiner Kunden. Der Bodyprofiler von Human Solutions benötigt dafür die Angabe von vier einfachen Größenparametern, greift auf die weltweit größte Datenbank an Bodyscans zu und liefert einen Avatar, dessen Körperformen individuell angepasst werden können. Dieser digitale Zwilling kann dann zum Beispiel online Kleidung anprobieren. Freundliche Leihgabe von Human Solutions GmbH, Kaiserslautern",
+			"title": "Bodyprofiler"
+		},
+		{
+			"icon": 3,
+			"id": 26,
+			"image": "mpk_App_Exponat_26.png",
+			"pixel_coords": {
+				"x": 1560,
+				"y": 1575
+			},
+			"references": [
+				29,
+				30
+			],
+			"text": "Am Körper getragene Sensorik, sogenannte „Wearables“, sind in Form von Fitness-Armbändern und Smart Watches längst im Alltag angekommen und nicht nur funktionale Technik, sondern Lifestyle-Accessoire. Im nächsten Schritt wird diese Technik zunehmend unsichtbar werden und Teil der Kleidung sein. Als Beispiel hierfür ist das Trainwear T-Shirt zu sehen. In den roten Bändern an der Brust und an den Oberarmen befinden sich Sensoren, die den Anpressdruck der darunterliegenden Muskulatur messen können. Die Sensoren sind rein textiler Natur, sie bestehen aus drei Schichten speziell beschichteter Textilien und können ca. 100 einzelne Druckpunkte 50-mal pro Sekunde erfassen. Die Ergebnisse werden drahtlos zu einem Handy/Rechner übertragen und dort von einer KI (Künstliche Intelligenz) Software analysiert. Die KI erkennt, welche Übungen gemacht werden, und ob die Ausführung korrekt erfolgt. Über eine Computerstimme aus dem Handy oder über ein Brillendisplay bekommt der Benutzer dann Hinweise, die ihm bei der Ausführung der Übung helfen. Das T-Shirt wurde im Rahmen der Telekom Fashion Fusion Challenge entwickelt und gewann den mit 20'000 Euro dotierten ersten Preis. Das interdisziplinäre Entwicklerteam besteht aus Gernot Bahle und Bo Zhou, IT-Wissenschaftlern am DFKI in Kaiserslautern sowie Lorenzo Fürg, Student der Sportwissenschaften an der Uni Passau. Freundliche Leihgabe des Deutschen Forschungsinstituts für Künstliche Intelligenz, Kaiserslautern",
+			"title": "Sportshirt"
+		},
+		{
+			"icon": 3,
+			"id": 28,
+			"image": "mpk_App_Exponat_28.png",
+			"pixel_coords": {
+				"x": 600,
+				"y": 2450
 			},
 			"references": [
 
 			],
-			"text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-			"title": "D Exponat"
-		}
-	],
-	"topics": [
-		{
-			"id": 6,
-			"image": "Bild_6.png",
-			"references": [
-				1,
-				3,
-				4
-			],
-			"text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-			"title": "A Thema"
+			"text": "Ein knabenhafter Bote hat einer jungen Frau in ihrem Gemacht einen Liebesbrief überbracht. Diesen gilt es zu beantworten, doch bevor sie sich dem bereitliegenden Schreibzeug widmet, bedeutet sie dem wartenden Jungen, Schweigen über die Korrespondenz zu wahren. Die Szene versetzt den Betrachter in die Rolle des zufälligen Beobachters und damit Mitwissers ihres Geheimnisses. Wir erhalten als Momentaufnahme offenbar Einblick in eine Liebesgeschichte. Was ist vorangegangen und was wird folgen? Einiges lässt sich durch das Abgebildete erschließen, anderes bleibt im Unklaren – so der Inhalt des Briefes. Mögen es die Zeilen eines geheimen Verehrers sein? Das Briefgeheimnis bleibt in diesem Fall gewahrt und wir können nur vermuten. Der eindeutig amouröse Kontext allerdings spiegelt sich auch in der Komposition. Schwerer roter Stoff, an Vorhang, Stuhl und Tischdecke zu finden, umgibt die Umworbene, die aus dem verschatteten Interieur durch eine nahezu bühnenhafte Beleuchtung hervorgehoben wird. Der in Kaiserslautern geborene Künstler Paul Martin war in München als Historien- und Genremaler tätig. Ausgebildet an der Münchner Akademie und in Paris bei Charles Gleyre sowie Paul Delaroche, wurde er für Großaufträge wie die Historiengemälde im Bayerischen Nationalmuseum, dem jetzigen Völkerkundemuseum, herangezogen. Daneben malte er Kabinettbilder in Öl, deren Szenen ebenfalls häufig in einem historischen Umfeld angesiedelt sind. Paul Martin – Billet-Doux (Liebesbrief), 1860, mpk, Gemäldesammlung ",
+			"title": "Billet Doux "
 		},
 		{
-			"id": 7,
-			"image": "Bild_7.png",
+			"icon": 3,
+			"id": 29,
+			"image": "mpk_App_Exponat_29.png",
+			"pixel_coords": {
+				"x": 3450,
+				"y": 3050
+			},
 			"references": [
-				4,
-				5
+				38,
+				42
 			],
-			"text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-			"title": "B Thema"
+			"text": "Die smarte Yoga Matte beinhaltet fast 10.000 Drucksensoren die 50mal pro Sekunde die Gewichtsverteilung auf der Matte erfassen. Die Sensoren sind rein textiler Natur, sie bestehen aus drei Schichten speziell beschichteter Textilien. Sie können günstig hergestellt und gut so in die Matte integriert werden, dass diese wie üblich zusammengerollt und überall mit hingenommen werden kann. Die Daten der Drucksensoren werden drahtlos zu einem Handy/Rechner übertragen und dort von einer KI (Künstliche Intelligenz) –  Software analysiert. Die KI überprüft an Hand der Daten die Ausführung der Übungen. Sie zählt, wie oft eine Übung gemacht wurde, und kontrolliert, ob Parameter wie Geschwindigkeit, Gewichtsverteilung oder Körperhaltung stimmen. Dank einer Computerstimme erhält der Benutzer über das Handy oder ein Brillendisplay anschließend Hinweise, die ihm helfen, die Ausführung der Übung zu verbessern. Die Matte wurde am DFKI Kaiserslautern im Rahmen des EU Projektes SimpleSkin entwickelt und ist eine freundliche Leihgabe des DFKI.",
+			"title": "Sportmatte"
 		},
 		{
-			"id": 8,
-			"image": "Bild_8.png",
+			"icon": 3,
+			"id": 30,
+			"image": "mpk_App_Exponat_30.png",
+			"pixel_coords": {
+				"x": 3920,
+				"y": 3050
+			},
+			"references": [
+				37,
+				38
+			],
+			"text": "Es ist überraschend, was Sie diesem Raum erleben können. Damit wir den besonderen Effekt nicht vorwegnehmen, wird hier nichts weiter verraten…",
+			"title": "Streng geheim"
+		},
+		{
+			"icon": 3,
+			"id": 31,
+			"image": "mpk_App_Exponat_31.png",
+			"pixel_coords": {
+				"x": 4870,
+				"y": 2970
+			},
 			"references": [
 
 			],
-			"text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-			"title": "C Thema"
+			"text": "In einem kleinen, verwinkelten Hausgärtchen ist ein Mann in die Lektüre seiner Zeitung vertieft. Die strahlende, aber noch tief stehende Morgensonne vermag die Terrasse noch nicht bis in den letzten Winkel auszuleuchten. Frühstücksgeschirr und Pfeife komplettieren das Bild intimer Behaglichkeit. Nach vorne wird das Gärtchen durch eine gemauerte Balustrade mit Treppenaufgang, nach hinten durch eine hohe, weiß gekalkte Mauer begrenzt. Üppiges Grün von Bäumen, Topf- und Kletterpflanzen rahmt den Bildausschnitt ein, der durch das kontrastreiche Spiel aus Licht und Schatten belebt wird. In Carl Spitzwegs (1808–1885) Darstellung der morgendlichen Idylle liegt jedoch auch ein karikaturhafter Zug: Abgeschirmt von der Welt bleibt das wahre Leben ausgesperrt. Allein durch die Zeitung, die mit kritischem, fast verächtlichem Blick studiert wird, vermag die Außenwelt in die häusliche Idylle einzudringen. Das Bild der heimeligen, privaten Enge schlägt um und wird zum Sinnbild für die geistige Enge des biedermeierlichen Kleinbürgers. Genrebilder wie diese haben Spitzwegs Ruf als Vertreter des gemütlichen Münchner Biedermeier begründet, wobei häufig der satirische Zug seiner Arbeiten außer Acht gelassen wird. Mit heutigem Blick erhält das Werk eine zusätzliche und zugleich doppeldeutige Ebene. Angesichts unzähliger technologischer Neuerungen verlieren wir den Überblick, der Rückzug in die „häusliche Idylle“ ist dabei ebenso verlockend wie unmöglich. Oder ist in einer Welt digitaler Fußspuren und potentieller Überwachung  der eigene Garten tatsächlich noch privat? Carl Spitzweg, Zeitungsleser im Hausgärtchen, 1845/48, mpk, Gemäldesammlung ",
+			"title": "Häusliche Idylle"
+		},
+		{
+			"icon": 2,
+			"id": 32,
+			"image": "mpk_App_Exponat_32.png",
+			"pixel_coords": {
+				"x": 5450,
+				"y": 1040
+			},
+			"references": [
+				39,
+				42
+			],
+			"text": "Die umfangreichen und auf mehreren Unterseiten der Homepage versteckten Geschäftsbedingungen haben wohl die wenigsten Nutzer gelesen. Mit den hier ausgedruckten Bedingungen, die von gut 12 Metern im Treppenhaus herabhängen sind längst noch nicht alle, der sich immer wieder ändernden Bedingungen erfasst. ",
+			"title": "Facebooks Geschäftsbedingungen"
+		},
+		{
+			"icon": 5,
+			"id": 33,
+			"image": "mpk_App_Exponat_33.png",
+			"pixel_coords": {
+				"x": 5775,
+				"y": 417
+			},
+			"references": [
+				14,
+				38
+			],
+			"text": "Das futuristische Manifest zählt zu den einflussreichsten Pamphleten des 20. Jahrhunderts. Prominent auf der Titelseite der angesehenen Pariser Tageszeitung „Le  Figaro“ wurde es am 20. Februar 1909 in hoher Auflage verbreitet. Urheber war Filippo Tommaso Marinetti (1878 – 1947), ein junger bis dahin völlig unbekannter Künstler und Schriftsteller. Fasziniert von Maschinen, dem Rausch der  Geschwindigkeit und einem hohen Tempo der Veränderungen war er von der Idee besessen mittels der Zerstörung des Alten eine neue Ordnung zu schaffen. Das Traktat umfasst  11 Thesen, mit denen Marinetti sich von allen Traditionen lossagte, um neuen technischen Formen Bahn zu brechen. Künstler wie Umberto Boccioni, Carlo Carrà, Luigi Russolo, Giacomo Balla und Gino Serverini  schlossen sich seinen futuristischen Idealen an. Bald gründeten sich auch eigene Schulen des  Futurismus, in denen neben Jugend und Geschwindigkeit auch Gewalt und Krieg verherrlicht wurden. Und heute? Über 100 Jahre später erfahren wir mittels der IT-Technologie einen enormen kulturellen  Wandel, der von künstlerischen Prozessen bis hin zum sozialen Miteinander unsere Gesellschaft in ihrer Breite erfasst: Ist es denkbar, das Marinettis exaltierte Forderungen heute ihre späte Umsetzung erfahren? ",
+			"title": "Marinettis futuristisches Manifest"
+		},
+		{
+			"icon": 5,
+			"id": 34,
+			"image": "mpk_App_Exponat_34.png",
+			"pixel_coords": {
+				"x": 5740,
+				"y": 1375
+			},
+			"references": [
+				38,
+				44
+			],
+			"text": "Gesehenes verarbeiten, dazu laden wir Sie ein und bieten, neben einer gemütlichen Sitzecke zugleich die Möglichkeit, schriftlich Kommentare oder Eindrücke festzuhalten. Wir nehmen Ihre Anregungen oder Kritik gerne entgegen: Analog aufschreiben und in die Urne einwerfen!",
+			"title": "Ruhezone"
+		},
+		{
+			"icon": 5,
+			"id": 35,
+			"image": "mpk_App_Exponat_35.png",
+			"pixel_coords": {
+				"x": 8180,
+				"y": 1395
+			},
+			"references": [
+				37,
+				6,
+				18,
+				19
+			],
+			"text": "Reliquien, Hostien, heilige Öle und Messbücher hatten im Mittelalter einen hohen Wert, da man ihnen eine besondere, heilsbringende Kraft zumaß und sie in Ritualen oder zu besonderen, feierlichen Anlässen mit eben der Hoffnung auf Heil präsentierte. Bis heute haben sich damit verbundene Handlungen erhalten, in Prozessionen und bei anderen Anlässen versuchen Gläubige auf der ganzen Welt eine Verbindung zum Heiligen herzustellen. Die Reliquien können so zu \"Vehikeln\" werden, mit denen man den Übergang von der profanen zur sakralen Welt vollziehen konnte und auch immer noch kann. Der Glauben an eine göttliche Welt bindet das eigene Leben ein in ein übergeordnetes Ganzes. Das Gefühl des Aufgehobenseins spendete Kraft und ist zugleich Richtschur für das eigene Leben.",
+			"title": "Glauben"
+		},
+		{
+			"icon": 5,
+			"id": 36,
+			"image": "mpk_App_Exponat_36.png Wissen_Dokumente.jpg",
+			"pixel_coords": {
+				"x": 8830,
+				"y": 2520
+			},
+			"references": [
+				35,
+				37,
+				38,
+				39,
+				40,
+				1,
+				5,
+				7,
+				18,
+				19
+			],
+			"text": "Knappe oder aufwendig herzustellende Güter wurden als „wertvoll“ angesehen: das konnten Zucker, Salz, Gewürze oder Alkohol genauso sein wie aufwendig herzustellende Papyri oder opulent gestaltete Handschriften. Heute ist es kaum noch vorstellbar, dass man Zucker oder Alkohol gut verschloss, damit die Dienerschaft weder naschen, noch einen Schluck des kostbaren Tropfens genießen konnte. Den zugehörigen Schlüssel bewahrte die Hausfrau am Schlüsselbund auf. Die Namensgebung der Tantalosflasche geht auf den gleichnamigen König zurück. Griechischer Mythologie zufolge stahl er während eines Gastmahls bei den Göttern Nektar und Ambrosia. Als er diesem Frevel noch Gräueltaten hinzufügte, wurde er von den Göttern in den Tartaros, den unangenehmsten Teil der Unterwelt, verbannt. Seitdem leidet Tantalos auf ewig Hunger und Durst. So offenbart der Flaschenname zweierlei, sehnsuchtsvolles Verlangen und eine nicht zimperlich ausfallende Strafe überführter Mundräuber.",
+			"title": "Seltene Güter"
+		},
+		{
+			"icon": 5,
+			"id": 37,
+			"image": "mpk_App_Exponat_37.png",
+			"pixel_coords": {
+				"x": 10350,
+				"y": 1560
+			},
+			"references": [
+				41,
+				42
+			],
+			"text": "PAUL (Persönlicher Assistent für unterstütztes Leben) ist ein über Touchdisplay bedienbares Gebäudesteuerungs- und Assistenzsystem. Es bietet eine Vielzahl von Komfort-, Multimedia- und Kommunikationsfunktionen. Seine wesentliche Aufgabe ist es, dem Nutzer Sicherheit zu bieten und ein selbstorganisiertes Leben zu unterstützen. Integriert ist hier zusätzlich ein intelligentes Sensorsystem, welches wie eine Trittschalldämmung unter allen gängigen Bodenbelägen verlegt werden kann. Damit wird der Boden zu einem großflächigen Touchpad, das die genaue Position, Anzahl und Geschwindigkeit von Personen erkennt und insbesondere im Bereich Gesundheit und Pflege eingesetzt wird: Liegt eine Person z.B. nach einem Sturz am Boden, kann das System sofort Hilfe rufen. Auch vielfältige andere Aufgaben der Gebäudeautomation werden übernommen: von der anwesenheitsbasierten Licht- und Klimasteuerung bis zur Meldung und Lokalisierung von Eindringlingen. Im Unterschied zu Kamera- oder RFID-basierten Systemen ist die Privatsphäre dabei jederzeit gesichert, denn das System lokalisiert zwar Personen, kann diese aber nicht identifizieren. Der hier gezeigte Demonstrator signalisiert Betreten und Sturz mittels zweier Lampen. Dass es sich ähnlich einem Touchpad nicht um Druck- sondern um kapazitive Näherungssensoren handelt, wird deutlich wenn man einen Sturz optional mit dem Sturzdummy simuliert. Die Silhouette besteht aus dem gleichen Material wie die Sensorfläche unter dem Laminat. Legen Sie die Form mit der schwarzen Seite nach oben auf den Boden, so wird ein Sturz angezeigt.",
+			"title": "Ambient Assisted Living"
+		},
+		{
+			"icon": 5,
+			"id": 38,
+			"image": "mpk_App_Exponat_38.png",
+			"pixel_coords": {
+				"x": 10110,
+				"y": 2440
+			},
+			"references": [
+				41,
+				42
+			],
+			"text": "Mit diesem Quiz können Sie Ihr Wissen und Ihre Sensibilität zu den Themen Datenschutz und Datensicherheit testen. Denken Sie, dass Sie über diese Themen gut informiert sind? Vielleicht werden Sie von der einen oder anderen Antwort überrascht sein. In Zusammenarbeit mit Fraunhofer IESE",
+			"title": "Quizz zum Sicherheitsbewusssein"
+		},
+		{
+			"icon": 5,
+			"id": 39,
+			"image": "mpk_App_Exponat_39.png",
+			"pixel_coords": {
+				"x": 8600,
+				"y": 2940
+			},
+			"references": [
+				42
+			],
+			"text": "Es stehen zwei Räume zur Verfügung, doch Sie erhalten Zutritt lediglich in einen von beiden. Warum und worauf wir Sie hier aufmerksam machen möchten, erfahren Sie nachdem Sie eingetreten sind",
+			"title": "Erste Klasse?"
+		},
+		{
+			"icon": 5,
+			"id": 40,
+			"image": "mpk_App_Exponat_40.png",
+			"pixel_coords": {
+				"x": 7900,
+				"y": 2250
+			},
+			"references": [
+				37,
+				38
+			],
+			"text": "Daten sind das neue Öl, das hat man schon oft gehört. Es ist eine Anspielung auf die enorme Profitabilität, mit denen sich Daten auswerten und verkaufen lassen. Bislang besonders begehrt: das Wissen um Schwangerschaft, Heirat oder Krankheit –  so genannte Wendepunkte im Leben, die Anschaffungen nach sich ziehen. Doch anders als Öl sind Daten nicht endlich und können, in Datenbänken gespeichert, immer wieder neu ausge- und verwertet werden, um möglichst noch verlässlichere Aussagen über unsere Vorlieben, unser zu erwartendes Verhalten zu gewinnen. Die Empfehlungen, die wir erhalten, um unser Leben vermeintlich angenehmer, effizienter, also einfacher machen, ziehen ein zur passenden Zeit angebotenes passendes Produkt nach sich. Die Grenze zwischen Manipulation und bewusst getroffener Entscheidung verschwimmt dabei zunehmend.",
+			"title": "Datenwerte"
+		},
+		{
+			"icon": 5,
+			"id": 41,
+			"image": "mpk_App_Exponat_41.png",
+			"pixel_coords": {
+				"x": 10530,
+				"y": 2030
+			},
+			"references": [
+				42,
+				14
+			],
+			"text": "Ein Tisch, zwei Bücher: Timm Ulrichs (*1940) zeichnet mit solch einfachen Mitteln ein gleichermaßen humorvolles wie kennzeichnendes Bild menschlicher Lebens- und Denkweisen. Mit gelben Recklamheften, Ausgaben zweier Hauptwerke von Immanuel Kant,  eines der der bedeutendsten deutschen Philosophen der Aufklärung, unterstreicht Ulrichs pointiert auch das Nebeneinander von potentiellem Denkvermögen und reinem menschlichen Pragmatismus. In der „Kritik der praktischen Vernunft“ lautet die zentrale philosophische Frage: Was kann ich tun? Deutlich im Gegensatz zu der moralisch zu verstehenden Grundsatzfrage zeigt sich der lebensnahe Einsatz des Heftchens. In direkter bildlicher Übersetzung des Titels sorgt es für die Stabilität eines sonst wackelnden Tischbeins. Auf dem Tisch liegt die „Kritik der reinen Vernunft“. Ein Traktat über die Grundvoraussetzungen des Menschen zur Erkenntnis, hier ohne direkt erkennbaren Einsatz. Übertragen auf die Möglichkeiten und Nutzungen der modernen IT-Technologie auch ein warnendes Zeichen vor unüberlegtem, zu raschem, aus reinem Pragmatismus oder Profit geleitetem Einsatz. Timm Ulrichs, Kritik der reinen Vernunft – Kritik der praktischen Vernunft, 1977 – 1985, mpk - Skulpturensammlung",
+			"title": "Kritik der praktischen Vernunft"
+		},
+		{
+			"icon": 5,
+			"id": 42,
+			"image": "mpk_App_Exponat_42.png",
+			"pixel_coords": {
+				"x": 9190,
+				"y": 3035
+			},
+			"references": [
+
+			],
+			"text": "Am Ende des Ausstellungsrundgangs erwartet Sie ein mit britischem Humor versehener Kommentar zu unserem, aus vermeintlich sinnvollen Motiven und gesicherten Ansichten geleiteten Tun. Unsere beständige Suche, auch nach dem Sinn des Seins, erfährt durch eine unpräzise gestellte Frage eine absurde Antwort: Eine Analogie zu fehlerhaft programmierten Algorithmen? Entscheiden Sie selbst",
+			"title": "Die Antwort"
+		},
+		{
+			"icon": 1,
+			"id": 49,
+			"image": "mpk_App_Exponat_49.png",
+			"pixel_coords": {
+				"x": 3135,
+				"y": 2525
+			},
+			"references": [
+
+			],
+			"text": "Die „Söhne der Mathematik“, so der Titel des fünfteiligen Werks der Künstlerin Rune Mields, erscheinen als merkwürdig fragmentierte, menschenleere Ritterrüstungen. Vor einem aus Zahlenreihen zusammengesetzten Bildgrund wirken die Gestalten wie schwebend vor den Augen des Betrachters. Ortlos und ohne ein kämpferisches Gegenüber drücken Haltung und Gesten automatisierte, blinde und ziellosen Aggression aus. Den Bildgrund bilden insgesamt 7067 Zahlen. Die Zusammensetzung der Zahlen erfolgte gleichwohl nicht wahllos: Jede Ziffer ist Bestandteil genau einer Primzahl. Deren ausgeschriebene Länge erstreckt sich über alle fünf Bilder: Angefangen oben links auf dem ersten Bild mit der Ziffer 5, läuft die Reihe über 207 Zeilen fort bis zur letzten Ziffer 1 unten rechts auf dem fünften Bild. Im Jahr 1984 war diese Primzahl ­- die größte je errechnete - ein mathematischer Weltrekord. Heute, die Größe ist längst mehrfach überholt, ist diesen besonderen Zahlen immer noch eines gemein: Primzahlen werden ihrer besonderen Eigenschaft wegen, nur durch Eins und sich selbst teilbar zu sein, eingesetzt, um militärische Codes zu schreiben. So stehen sie in enger Beziehung zu Kriegsstrategien. Die „Söhne der Mathematik“  - ein Kommentar zu all jenen Söhnen, die in einen Krieg ziehen müssen. Rune Mields, „Söhne der Mathematik“, 1986, freundliche Leihgabe der Galerie Judith Andreae, Bonn",
+			"title": "Söhne der Mathematik"
+		},
+		{
+			"icon": 5,
+			"id": 55,
+			"image": "mpk_App_Exponat_55.png",
+			"pixel_coords": {
+				"x": 9590,
+				"y": 2520
+			},
+			"references": [
+
+			],
+			"text": "Dokumente wurden schon immer gut verschlossen aufgehoben, sind sie doch häufig Beweise vertraglicher Vereinbarungen. In diesem Kontext ist eine Zunfttruhe jedoch weit mehr als lediglich ein schützendes Behältnis: Die Zunft als ständische Vereinigung von Handwerkern existierte in Deutschland vom 12. bis ins  19. Jahrhundert. Wichtigstes „Gerät“ der Zünfte war dabei die Zunfttruhe, die den Mittelpunkt des Zunftbrauchtums und Zunftrechts darstellte. Sie beinhaltete alle wichtigen Dokumente und das Zunftsiegel. Die rechtsrituelle Bedeutung der Zunfttruhe war essentiell. Sie musste bei jeder Tagung oder Verhandlung der Zunft im Raum sein. Sobald sie geöffnet wurde – und nur dann – war alles Gesagte rechtsgültig. Vor der geöffneten Zunfttruhe wurden Verstöße gegen das Zunft- und Gewerberecht bestraft, Gesellenbriefe ausgestellt und Lehrlinge entlassen. Das Exemplar aus dem Bestand des mpk weist eine gängige Kastenform auf und ist sowohl außen, als auch innen mit dem Wappen der bayrischen Bäckerzunft versehen. Dieses wird von zwei schreitenden Löwen flankiert. Die mehrfache Anbringung verdeutlicht, dass die Truhe sowohl geschlossen, als auch offen genutzt wurde. Zu ihren weitern Inhalte gehörten die Zunftordnung, Urkunden, Protokolle, Kassenbücher, Meister- und Gesellenaufnahmebücher, Briefe, die Kassa, sowie Zunftwappen, -schilder und -siegel. Die gesamte Organisation einer Zunft lag damit in der Zunfttruhe, weshalb sie zum Schutz vor Veruntreuung nur mit mehreren Schlüsseln, die von unterschiedlichen Zunftmitgliedern aufbewahrt wurden, geöffnet werden konnte. Fehlte einer, konnte sie nicht geöffnet werden und die Zunft damit keine rechtskräftigen Beschlüsse fassen.",
+			"title": "Schützenswertes Wissen"
+		},
+		{
+			"icon": 5,
+			"id": 56,
+			"image": "mpk_App_Exponat_56.png",
+			"pixel_coords": {
+				"x": 7900,
+				"y": 3050
+			},
+			"references": [
+
+			],
+			"text": "Lassen Sie sich überraschen, was wir nach ihrem Rundgang alles über Sie herausgefunden haben. Daten werden überall erhoben, ob mit oder ohne unser Wissen. Es liegt an uns, sich für einen guten Umgang mit diesen sich einzusetzen",
+			"title": "Ergebnisse des Rundgangs"
+		},
+		{
+			"icon": 5,
+			"id": 57,
+			"image": "mpk_App_Exponat_57.png",
+			"pixel_coords": {
+				"x": 9190,
+				"y": 3035
+			},
+			"references": [
+
+			],
+			"text": "Am Ende des Ausstellungsrundgangs erwartet Sie ein mit britischem Humor versehener Kommentar zu unserem, aus vermeintlich sinnvollen Motiven und gesicherten Ansichten geleiteten Tun. Unsere beständige Suche, auch nach dem Sinn des Seins, erfährt durch eine unpräzise gestellte Frage eine absurde Antwort: Eine Analogie zu fehlerhaft programmierten Algorithmen? Entscheiden Sie selbst. ",
+			"title": "Die Antwort"
+		},
+		{
+			"icon": 5,
+			"id": 58,
+			"image": "mpk_App_Exponat_58.png",
+			"pixel_coords": {
+				"x": 8600,
+				"y": 2940
+			},
+			"references": [
+				42
+			],
+			"text": "Es stehen zwei Räume zur Verfügung, doch Sie erhalten Zutritt lediglich in einen von beiden. Warum und worauf wir Sie hier aufmerksam machen möchten, erfahren Sie nachdem Sie eingetreten sind",
+			"title": "3. Klasse?"
+		},
+		{
+			"icon": 5,
+			"id": 59,
+			"image": "mpk_App_Exponat_59.png",
+			"pixel_coords": {
+				"x": 7900,
+				"y": 3050
+			},
+			"references": [
+
+			],
+			"text": "Lassen Sie sich überraschen, was wir nach ihrem Rundgang alles über Sie herausgefunden haben. Daten werden überall erhoben, ob mit oder ohne unser Wissen. Es liegt an uns, sich für einen guten Umgang mit diesen sich einzusetzen",
+			"title": "Ergebnisse des Rundgangs"
 		}
+	],
+	"topics": [
+
 	]
 }

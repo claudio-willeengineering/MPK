@@ -88,7 +88,13 @@ public class FragmentDetails extends BaseFragment {
 
         setSubtitle(title);
 
-        imv.setImageResource(R.drawable.placeholder);
+        //Image
+        final int resourceId = getResources().getIdentifier(content.getImage().toLowerCase().replace(".png",""),
+                "drawable",
+                getContext().getPackageName());
+        imv.setImageResource(resourceId);
+
+
         tx1.setText(content.getTitle());
         tx2.setText(content.getText());
 

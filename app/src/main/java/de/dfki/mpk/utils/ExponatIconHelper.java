@@ -24,12 +24,10 @@ public class ExponatIconHelper {
 
     private int strokeWidth;
 
-
-
     public ExponatIconHelper(Activity a){
         activity = a;
         float density = activity.getResources().getDisplayMetrics().densityDpi;
-        float w = 220,h = 220;
+        float w = 120,h = 120;
         strokeWidth = (int)(density/60f);
 
 

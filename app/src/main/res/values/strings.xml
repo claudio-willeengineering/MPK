@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MPK</string>
+    <string name="app_name">OSUS</string>
     <string name="facebook_app_id">615716218628762</string>
     <string name="fb_login_protocol_scheme">fb[615716218628762]</string>
 
@@ -38,12 +38,46 @@
     <string name="fragment_feedback_content_title">Was haben Sie auf dem Herzen?</string>
     <string name="error_audio_dialog_title">Achtung</string>
     <string name="error_audio_dialog_body">Without Audio Permission, you cannot submit feedback</string>
-    <string name="first_fragment_welcome">In der Ausstellung „Ohne Schlüssel und Schloss“ tauchen Sie ein in die Welt der Ge heimnisse, Verschlüsselung und Daten erfassung sowie deren Bedeutung im Wan del der Zeit. Besonders heutzutage gehen wir mit unseren Daten viel zu oft viel zu offen um. Doch was kann uns dabei geschehen? In der Ausstellung werden Sie ein Gefühl für diese Thematik bekommen. Hierbei ist es voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</string>
-    <string name="first_fragment_android_permission">Viele Bestandteile der Ausstellung können Sie nur betrachten, wenn Sie der App die Erfas sung Ihres momentanen Standortes gestatten. Wir versprechen Ihnen, dass wir diese Daten nicht mit Dritten teilen und sie nicht für an dere Zwecke als die Ausstellung selbst nutzen</string>
-    <string name="first_fragment_android_permission_2">Sind Sie damit einverstanden, dass diese App auf Ihre Standortinforma­tionen zugreift?</string>
-    <string name="first_fragment_science_permission">Mit Ihrem Besuch endet die Ausstellung je doch noch nicht. Gemeinsam mit dem Deut schen Forschungszentrum für Künstliche In telligenz, werten wir alle gesammelten Daten am Ende der Ausstellung aus und veröffentli chen einen wissenschaftlichen Bericht, in dem Sie lernen können, was unsere Forschungs partner alles aus den Daten gelernt haben. Wenn Sie möchten, senden wir Ihnen diesen Bericht per Email zu – tragen Sie hierfür einfach Ihre Email Adresse in das folgende Feld ein.</string>
+
+
+    <string name="first_fragment_welcome">
+
+        Herzlich Willkommen bei Ohne Schlüssel und Schloss? Chancen und Risiken von Big Data.
+Prachtvolle Schlösser und charmante Schlüssel aus vergangenen Jahrhunderten geben Anlass, die mit diesen Artefakten verbundene Kulturtechnik aus heutiger Sicht zu befragen. Im Wandel von analog zu digital ist die heutige Haltung zu Verschluss und Verschlüsselung alles andere als eindeutig…
+
+Dabei stellen wir auch die Frage, in welchem Zusammenhang Geheimnisse, Privatsphäre, Codierungen, und Datenerfassung heute stehen? Um hierfür ein besseres Verständnis zu entwickeln, bietet die Ausstellung einen Blick auf historische Verschlussobjekte und stellt diesen neue IT-Technologie gegenüber. Daten seien das neue Gold heißt es immer wieder: Gibt also aktuell einen Wertewandel zu verzeichnen? Und gehen wir mit unseren Daten nicht viel zu oft und viel zu offen um? Was ist die Folge? Interaktive Stationen werden Ihnen ein Gefühl für diese ansonsten so abstrakte Thematik vermitteln. Bitte setzten Sie dafür auch Ihr Smartphone ein und verwenden unsere App. Sie erhalten so viele nützliche Informationen und Zugang zu sonst verschlossenen Türen. Und schließlich werden Sie um eine Erfahrung reicher sein, was ein verantwortungsbewusster Umgang mit (eigenen) Daten bedeutet.
+
+    </string>
+
+
+
+    <string name="first_fragment_android_permission">
+    Einige Bestandteile der Ausstellung können Sie nur betrachten, wenn Sie der APP die Erfassung Ihres momentanen Standortes gestatten. Selbstverständlich werden wir diese Daten ausschließlich für die Zwecke der Ausstellung nutzen und nicht an Dritte weitergeben.
+    </string>
+
+
+
+    <string name="first_fragment_android_permission_2">
+        Sind Sie damit einverstanden, dass diese App auf Ihre Standortinforma­tionen zugreift?
+    </string>
+
+
+
+    <string name="first_fragment_science_permission">
+
+    Ihr Besuch hat auch im Anschluss an die Ausstellung Konsequenzen und Folgen. Gemeinsam mit dem Deutschen Forschungszentrum für Künstliche Intelligenz werten wir alle gesammelten Daten aus und veröffentlichen einen wissenschaftlichen Bericht, dem Sie entnehmen können, welche Informationen unsere Forschungspartner aus Ihren Daten gezogen haben. Wenn Sie möchten, senden wir Ihnen diesen Bericht auch per Email zu – tragen Sie hierfür Ihre Email Adresse in das folgende Feld ein.
+    </string>
+
     <string name="first_fragment_science_permission_2">Dürfen wir Ihre Daten im Rahmen der wissenschaftlichen Analyse verwenden?</string>
-    <string name="first_fragment_facebook_login">Nutzen Sie Facebook? Dann geben Sie wahr scheinlich mehr Daten über sich preis, als Sie wissen. Wir würden diese Daten gern im Rahmen der Ausstellung nutzen, um Ihnen deren Bedeutung vor Augen zu führen. Wenn Sie sich einmalig mit Ihrem Facebook Konto verbinden, bekommen Sie zum Dank einen Rabatt von X EUR auf den Eintrittspreis. Natürlich sendet diese App selbst keinerlei Daten zu Facebook und wird auch sonst nichts in Ihrem Namen veröffentlichen!</string>
+
+
+    <string name="first_fragment_facebook_login">
+
+        Nutzen Sie Facebook? Melden Sie sich einmalig mit Ihrem Facebook Konto bei uns an. Dafür erhalten Sie 1 EUR Rabatt auf den Eintrittspreis. Außerdem erhalten Sie so einen weitreichenden Einblick, welche Bedeutung die Daten haben, die man meist privat bei  Facebook einstellt. Wir nutzen diese Daten ausschließlich im Rahmen der Ausstellung. Selbstverständlich sendet diese App selbst keinerlei Daten zu Facebook.
+
+        </string>
+
+
     <string name="first_fragment_questionnaire">Wir würden Sie gern etwas näher kennen lernen, um Ihnen einige Exponate in der Ausstellung besonders ans Herz legen zu können. Beantwort­en Sie hierfür doch bitte die folgenden Fragen – im Anschluss können Sie sofort mit der Nutzung der Ausstellungs App beginnen.</string>
     <string name="first_fragment_questionnaire_submit">Abgeben</string>
     <string name="fragment_feedback_text">Dies ist der Pass Bildschirm. Wofür und was auch immer für ein Text folgt. Hier jedenfalls nur Blindtext, der noch getextet wird. Frage, ob man den Homebutton türkis lässt oder auch gelb. Hier nur als Blindtext</string>
@@ -51,6 +85,20 @@
     <string name="questionnaire_q2">Wie alt sind Sie?</string>
     <string name="questionnaire_q3">Wie sind Sie auf die Ausstellung aufmerksam geworden?</string>
     <string name="questionnaire_q4">Welches der folgenden vier Bilder gefällt Ihnen spontan am besten?</string>
+
+
+    <string name="fragment_welcome_text">
+        Herzlich Willkommen bei Ohne Schlüssel und Schloss? Chancen und Risiken von Big Data.
+Prachtvolle Schlösser und charmante Schlüssel aus vergangenen Jahrhunderten geben Anlass, die mit diesen Artefakten verbundene Kulturtechnik aus heutiger Sicht zu befragen. Im Wandel von analog zu digital ist die heutige Haltung zu Verschluss und Verschlüsselung alles andere als eindeutig…
+\n\n
+Dabei stellen wir auch die Frage, in welchem Zusammenhang Geheimnisse, Privatsphäre, Codierungen, und Datenerfassung
+        heute stehen? Um hierfür ein besseres Verständnis zu entwickeln, bietet die Ausstellung einen Blick auf historische Verschlussobjekte und stellt diesen neue IT-Technologie gegenüber. Daten seien das neue Gold heißt es immer wieder: Gibt also aktuell einen Wertewandel zu verzeichnen? Und gehen wir mit unseren Daten nicht viel zu oft und viel zu offen um? Was ist die Folge? Interaktive Stationen werden Ihnen ein Gefühl für diese ansonsten so abstrakte Thematik vermitteln. Bitte setzten Sie dafür auch Ihr Smartphone ein und verwenden unsere App. Sie erhalten so viele nützliche Informationen und Zugang zu sonst verschlossenen Türen. Und schließlich werden Sie um
+        eine Erfahrung reicher sein, was ein verantwortungsbewusster Umgang mit (eigenen) Daten bedeutet.</string>
+
+
+
+
+    <string name="fragment_questionnaire_text">Wir würden Sie gern etwas näher kennenlernen, um Ihnen einige Exponate in der Ausstellung besonders ans Herz legen zu können. Beantworten Sie hierfür bitte die folgenden Fragen – im Anschluss können Sie sofort mit der Nutzung der Ausstellungs-App beginnen.</string>
 
 
 </resources>

@@ -13,7 +13,9 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.graphics.PointF;
 import android.location.Location;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -44,6 +46,7 @@ import com.willeengineering.sdk.WESBMSManager.SBMSManager;
 import com.willeengineering.sdk.WESBMSManager.SBMSManagerCallback;
 import com.willeengineering.sdk.WEScanner.WEBeaconRangingService;
 
+import org.altbeacon.beacon.powersave.BackgroundPowerSaver;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,6 +61,7 @@ import java.util.List;
 import de.dfki.mpk.fragments.BaseFragment;
 import de.dfki.mpk.fragments.FragmentDetails;
 import de.dfki.mpk.fragments.FragmentFeedback;
+import de.dfki.mpk.fragments.FragmentFloorPlan;
 import de.dfki.mpk.fragments.FragmentPass;
 import de.dfki.mpk.fragments.Fragment_Home;
 import de.dfki.mpk.model.ExhibitTimeWrapper;
@@ -252,11 +256,13 @@ public class Home extends AppCompatActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        if((!((MPKApplication)getApplication()).isFirstRun()) && ((MPKApplication)getApplication()).getBeaconPermission())
+        if((!((MPKApplication)getApplication()).isFirstRun()))
         {
-            initSdk();
+            if(((MPKApplication)getApplication()).getBeaconPermission()) {
+                initSdk();
+                startLocationUpdates();
+            }
             computeRecommendations();
-            startLocationUpdates();
         }
 
     }
@@ -417,7 +423,6 @@ public class Home extends AppCompatActivity{
 
 
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -443,8 +448,8 @@ public class Home extends AppCompatActivity{
             else if ((resultCode == RESULT_CANCELED)){
                 //close the app
                 try {
-                    startSdk();
-                    //deInitSDK();
+                    //startSdk();
+                    deInitSDK();
                 }
                 catch (Exception e)
                 {
@@ -478,75 +483,70 @@ public class Home extends AppCompatActivity{
                 String max = userAge.getString("max");
 
                 int age = -1;
-                if(min != "")
-                {
+                if (min != "") {
                     age = Integer.parseInt(min) + 3;
-                }
-                else
-                {
+                } else {
                     age = Integer.parseInt(max) - 3;
                 }
 
                 JSONArray recommendationReferences = null;
-                for(int i=0; i< subrec.length(); i++)
-                {
-                    int minAge  =   subrec.getJSONObject(i).getInt("min_age");
-                    int maxAge  =   subrec.getJSONObject(i).getInt("max_age");
-                    if(age >= minAge && age <= maxAge)
-                    {
+                for (int i = 0; i < subrec.length(); i++) {
+                    int minAge = subrec.getJSONObject(i).getInt("min_age");
+                    int maxAge = subrec.getJSONObject(i).getInt("max_age");
+                    if (age >= minAge && age <= maxAge) {
                         recommendationReferences = subrec.getJSONObject(i).getJSONArray("recommendations");
                         break;
                     }
                 }
 
-                for(int i=0; i<recommendationReferences.length(); i++)
-                {
+                for (int i = 0; i < recommendationReferences.length(); i++) {
                     String id = recommendationReferences.getString(i);
-                    if(exhibits.containsKey(id))
-                    {
-                        recommendedExponats.put(id,exhibits.get(id).getExhibits());
+                    if (exhibits.containsKey(id)) {
+                        recommendedExponats.put(id, exhibits.get(id).getExhibits());
                     }
                 }
+            } catch (JSONException exp) {
+                exp.printStackTrace();
+            }
 
-                switch (application.getImagePreference())
-                {
+
+        }
+
+            try {
+                JSONObject subrec = recommendation.getJSONObject("image_preference");
+
+                JSONArray recommendationReferences = null;
+                switch (application.getImagePreference()) {
                     case 1:
-                        recommendationReferences = recommendation.getJSONArray("technology");
+                        recommendationReferences = subrec.getJSONArray("technology");
                         break;
                     case 2:
-                        recommendationReferences = recommendation.getJSONArray("secret");
+                        recommendationReferences = subrec.getJSONArray("secret");
                         break;
                     case 3:
-                        recommendationReferences = recommendation.getJSONArray("body");
+                        recommendationReferences = subrec.getJSONArray("body");
                         break;
                     case 4:
-                        recommendationReferences = recommendation.getJSONArray("privacy");
+                        recommendationReferences = subrec.getJSONArray("privacy");
                         break;
                 }
 
-                for(int i=0 ; i< recommendationReferences.length(); i++)
-                {
+                for (int i = 0; i < recommendationReferences.length(); i++) {
                     String id = recommendationReferences.getString(i);
-                    if(exhibits.containsKey(id))
-                    {
-                        recommendedExponats.put(id,exhibits.get(id).getExhibits());
+                    if (exhibits.containsKey(id)) {
+                        recommendedExponats.put(id, exhibits.get(id).getExhibits());
                     }
                 }
 
 
-
-
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        }
         computeThreshHoldRecommendations();
     }
 
-    void computeThreshHoldRecommendations()
+    public void computeThreshHoldRecommendations()
     {
         MPKApplication application = (MPKApplication) getApplication();
         JSONObject recommendation = UtilsHelpers.fromRawToJson(this, R.raw.recommendation);
@@ -595,7 +595,6 @@ public class Home extends AppCompatActivity{
     }
     void startSdk(){
 
-        /*
         //Start the used services
         startService(new Intent(this, WEBeaconRangingService.class));
 
@@ -608,7 +607,7 @@ public class Home extends AppCompatActivity{
         SBMSManager.init(getApplicationContext());
         SBMSManager.setCallback(mSBMSManagerCallback);
         SBMSManager.setToken(MPKApplication.BEACON_TOKEN);
-*/
+        BackgroundPowerSaver backgroundPowerSaver = new BackgroundPowerSaver(this);
 
     }
 
@@ -625,34 +624,25 @@ public class Home extends AppCompatActivity{
     public final SBMSManagerCallback mSBMSManagerCallback = new SBMSManagerCallback() {
         @Override
         public void onEnteredSubplace(SBMSLocation sBMSLocation) {
-            Log.i(TAG, "onEnteredSubplace");
 
             String subplaceId = sBMSLocation.getSubplaceId()+"";
 
-            String posXY = "";
-
-
-            for (int i1 = 0; i1 < sBMSLocation.getPosXY().size(); i1++) {
-                if (i1 > 0) {
-                    posXY = posXY + "; ";
-                }
-
-                posXY = posXY + sBMSLocation.getPosXY().get(i1).x + "/";
-                posXY = posXY + sBMSLocation.getPosXY().get(i1).y;
+            if(containsExhibit(subplaceId))
+            {
+                getExhibitTimeWrapper(subplaceId).Enter();
             }
 
-            final String outputString = "onEnteredSubplace: " + sBMSLocation.getSubplaceId() + ",  mapId=" + sBMSLocation.getMapId() + ", posXY=" + posXY + " at " + sBMSLocation.getLocalTimestamp();
-
-            Log.i(TAG, outputString);
         }
 
         @Override
         public void onExitedSubplace(SBMSLocation sBMSLocation) {
-            final String outputString = "onExitedSubplace: " + sBMSLocation.getSubplaceId() + " at " + sBMSLocation.getLocalTimestamp();
 
-            String id = sBMSLocation.getSubplaceId()+"";
+            String subplaceId = sBMSLocation.getSubplaceId()+"";
 
-            Log.i(TAG, outputString);
+            if(containsExhibit(subplaceId))
+            {
+                getExhibitTimeWrapper(subplaceId).Leave();
+            }
 
         }
 
@@ -733,7 +723,7 @@ public class Home extends AppCompatActivity{
     public void buildPolygon(){
 
         try {
-            JSONArray array = UtilsHelpers.fromRawToJsonArray(this, R.raw.stub);
+            JSONArray array = UtilsHelpers.fromRawToJsonArray(this, R.raw.geofence);
             for (int i = 0; i < array.length(); i++) {
                 JSONObject json = array.getJSONObject(i);
                 Location l = new Location("");
@@ -796,6 +786,22 @@ public class Home extends AppCompatActivity{
 
     public String getMostRecentBeacon(){
         return mostRecentBeacon;
+    }
+
+    public void updateMapView(){
+
+        if(FragmentFloorPlan.getFloorPlanImage() != null)
+        {
+
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    FragmentFloorPlan.getFloorPlanImage().invalidate();
+                }
+            }, 0);
+
+        }
+
     }
 }
 

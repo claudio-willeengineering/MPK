@@ -98,7 +98,7 @@ public class PanZoomImageView extends SubsamplingScaleImageView {
                             tappedPoint.y >= pictureStartY &&
                             tappedPoint.y<= pictureEndY)
                     {
-                        Toast.makeText(getContext(), "Captured "+ex.getExhibits().getTitle(),Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), "Captured "+ex.getExhibits().getTitle(),Toast.LENGTH_SHORT).show();
                         FragmentDetails fragmentDetails = FragmentDetails.createInstance();
                         Bundle b = new Bundle();
                         b.putString(FragmentDetails.key,ex.getExhibits().getJson());

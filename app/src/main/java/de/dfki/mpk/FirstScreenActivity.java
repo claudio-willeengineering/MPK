@@ -9,6 +9,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.ColorUtils;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -23,6 +26,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -72,6 +76,14 @@ public class FirstScreenActivity extends AppCompatActivity {
     Spinner ageSpinner = null;
     LinearLayout nameQuestionLayout = null;
     LinearLayout ageQuestionLayout = null;
+
+
+    int image_pref = 1;
+
+    ImageView techView;
+    ImageView secretView;
+    ImageView bodyView;
+    ImageView privacyView;
 
 
 
@@ -416,7 +428,6 @@ public class FirstScreenActivity extends AppCompatActivity {
                     ageSpinner = (Spinner) rootView.findViewById(R.id.ageSpinner);
                     nameQuestionLayout = rootView.findViewById(R.id.nameQuestion);
                     ageQuestionLayout = rootView.findViewById(R.id.ageQuestion);
-                    final RadioGroup radioGroup = rootView.findViewById(R.id.radioGroup);
 
 
                     final String[] ageRecommendation = { "Bitte wählen Sie","0-10", "10-20", "20-30", "30-40",
@@ -436,6 +447,22 @@ public class FirstScreenActivity extends AppCompatActivity {
                             android.R.layout.simple_spinner_item,recommendation);
                     recommAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     recommSpinner.setAdapter(recommAdapter);
+
+
+                    techView = rootView.findViewById(R.id.tech);
+                    secretView = rootView.findViewById(R.id.secret);
+                    bodyView = rootView.findViewById(R.id.body);
+                    privacyView = rootView.findViewById(R.id.privacy);
+
+
+                    image_pref = 1;
+
+                    techView.setOnClickListener(preferneceClickListener);
+                    secretView.setOnClickListener(preferneceClickListener);
+                    bodyView.setOnClickListener(preferneceClickListener);
+                    privacyView.setOnClickListener(preferneceClickListener);
+
+                    techView.performClick();
 
                     if(((MPKApplication)getApplication()).getFacebookApproved())
                     {
@@ -484,6 +511,12 @@ public class FirstScreenActivity extends AppCompatActivity {
                                                     json.put("referrer",recommSpinner.getSelectedItemPosition());
                                                 }
 
+                                                json.put("image_pref",image_pref);
+
+                                                application.setImagePreference(image_pref);
+
+
+                                                /*
                                                 if(radioGroup.getCheckedRadioButtonId()>-1)
                                                 {
                                                     switch (radioGroup.getCheckedRadioButtonId())
@@ -506,6 +539,7 @@ public class FirstScreenActivity extends AppCompatActivity {
                                                             break;
                                                     }
                                                 }
+                                                */
 
                                                 String response = NetworkUtils.post("http://uni-data.wearcom.org/submit/mpk_survey/",json.toString(),
                                                         "05f3b3e07ea384041b4ecedb38d8ed0c");
@@ -575,6 +609,39 @@ public class FirstScreenActivity extends AppCompatActivity {
             public void destroyItem(ViewGroup container, int position, Object object) {
                 container.removeView((LinearLayout) object);
             }
+
+
+
+        View.OnClickListener preferneceClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                techView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.tech));
+                secretView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.secret));
+                bodyView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.body));
+                privacyView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.privacy));
+
+                switch (view.getId())
+                {
+                    case R.id.tech:
+                        techView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.tech_active));
+                        image_pref = 1;
+                        break;
+                    case R.id.secret:
+                        secretView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.secret_active));
+                        image_pref = 2;
+                        break;
+                    case R.id.body:
+                        bodyView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.body_active));
+                        image_pref = 3;
+                        break;
+                    case R.id.privacy:
+                        privacyView.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.privacy_active));
+                        image_pref = 4;
+                        break;
+                }
+            }
+        };
         }
 
 
